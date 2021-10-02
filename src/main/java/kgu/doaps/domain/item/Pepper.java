@@ -11,8 +11,6 @@ import javax.persistence.Id;
 @Entity
 @DiscriminatorValue("Pepper")
 @Getter @Setter
-public class Pepper {
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Pepper extends Item{
+
 }
