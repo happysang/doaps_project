@@ -2,12 +2,14 @@ package kgu.doaps.domain;
 
 import kgu.doaps.domain.item.Item;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Getter @Setter
+@NoArgsConstructor
 public class OrderItem {
     @Id @GeneratedValue
     @Column(name = "order_item_id")
