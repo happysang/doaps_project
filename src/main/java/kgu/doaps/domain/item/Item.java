@@ -24,6 +24,7 @@ public abstract class Item {
     private int stockQuantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     //==비즈니스 로직 ==//
