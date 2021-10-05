@@ -1,5 +1,6 @@
 package kgu.doaps.repository;
 
+import kgu.doaps.domain.Member;
 import kgu.doaps.domain.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -21,7 +22,7 @@ public class OrderRepository {
 
     public Order findOne(Long id) { return em.find(Order.class, id); }
 
-    /* 조건 검색 기능 (강의 내용)
+    //조건 검색 기능 (강의 내용)
     public List<Order> findAll(OrderSearch orderSearch) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Order> cq = cb.createQuery(Order.class);
@@ -45,5 +46,5 @@ public class OrderRepository {
         TypedQuery<Order> query = em.createQuery(cq).setMaxResults(1000); //최대 1000건
         return query.getResultList();
     }
-     */
+
 }
