@@ -1,6 +1,7 @@
 package kgu.doaps.domain.item;
 
 import kgu.doaps.domain.Category;
+import kgu.doaps.domain.Member;
 import kgu.doaps.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +27,10 @@ public abstract class Item {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="seller_id")
+    private Member member;
 
     //==비즈니스 로직 ==//
     /*
