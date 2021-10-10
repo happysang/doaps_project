@@ -1,13 +1,11 @@
 package kgu.doaps.domain.item;
 
-import kgu.doaps.domain.Category;
 import kgu.doaps.domain.Member;
 import kgu.doaps.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -23,10 +21,6 @@ public abstract class Item {
     private String name;  // 상품 이름
     private int price;  //상품 가격
     private int stockQuantity;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="seller_id")
