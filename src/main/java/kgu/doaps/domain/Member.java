@@ -4,26 +4,28 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Getter @Setter
 public class Member {
     @Id @GeneratedValue
     @Column(name = "member_id")
-    private Long id;
+    private Long id; // db ID
 
+    @NotEmpty
+    private String loginId; // 로그인 ID
+    @NotEmpty
+    private String password;
+    @NotEmpty
     private String name;
 
     @Embedded
     private Address address;
 
-    private String pwd;
-
     @Enumerated(EnumType.STRING)
     private MemberStatus memberStatus;
 
+    private String phone;  //핸드폰번호
 
-    //후에 개발 시 필드 추가할목록
-//    private String phone;  //핸드폰번호
-//    private String userID;  //로그인시 필요한 id
 }

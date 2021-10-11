@@ -2,12 +2,14 @@ package kgu.doaps.repository;
 
 import kgu.doaps.domain.Member;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Slf4j
 @Repository
 @RequiredArgsConstructor
 public class MemberRepository {
@@ -33,5 +35,14 @@ public class MemberRepository {
                 .getResultList();
     }
 
-
+    public Member findByLoginId(String loginId) {
+        List<Member> findMember = em.createQuery("select m from Member m where m.loginId = :loginId", Member.class)
+                .setParameter("loginId", loginId)
+                .getResultList();
+        if (findMember.size()==0){
+            return null;
+        } else{
+            return findMember.get(0);
+        }
+    }
 }
