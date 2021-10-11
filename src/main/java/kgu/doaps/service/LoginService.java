@@ -12,7 +12,10 @@ public class LoginService {
 
 
     public Member login(String memberId, String password) {
-        Member member = (Member) memberRepository.findByLoginId(memberId);
+        Member member = memberRepository.findByLoginId(memberId);
+        if (member == null){
+            return null;
+        }
         if (member.getPassword().equals(password)){
             return member;
         } else {

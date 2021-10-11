@@ -36,9 +36,13 @@ public class MemberRepository {
     }
 
     public Member findByLoginId(String loginId) {
-        return em.createQuery("select m from Member m where m.loginId = :loginId", Member.class)
+        List<Member> findMember = em.createQuery("select m from Member m where m.loginId = :loginId", Member.class)
                 .setParameter("loginId", loginId)
-                .getResultList()
-                .get(0);
+                .getResultList();
+        if (findMember.size()==0){
+            return null;
+        } else{
+            return findMember.get(0);
+        }
     }
 }
