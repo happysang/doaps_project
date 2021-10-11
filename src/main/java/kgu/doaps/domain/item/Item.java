@@ -26,6 +26,7 @@ public abstract class Item {
     @JoinColumn(name="seller_id")
     private Member member;
 
+    private String imgUrl;
     //==비즈니스 로직 ==//
     /*
      * stock 증가

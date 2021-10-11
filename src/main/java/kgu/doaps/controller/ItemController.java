@@ -6,11 +6,10 @@ import kgu.doaps.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.List;
 
 @Controller
@@ -26,13 +25,26 @@ public class ItemController {
     }
 
     @PostMapping("/items/new")
-    public String create(PepperForm form) {
-        Pepper pepper = new Pepper();
-        pepper.setName(form.getName());
-        pepper.setPrice(form.getPrice());
-        pepper.setStockQuantity(form.getStockQuantity());
+    public String create(@RequestParam("img") MultipartFile files, PepperForm form) {
+        try {
+            String baseDir = "C:\\Users\\seokgeun\\Documents\\ServerFiles";
+            String filePath = baseDir + "\\" + files.getOriginalFilename();
+            files.transferTo(new File(filePath));
+//            Authentication user = SecurityContextHolder.getContext().getAuthentication();
+//            String sellerID = user.getName();
 
-        itemService.saveItem(pepper);
+            Pepper pepper = new Pepper();
+            pepper.setName(form.getName());
+            pepper.setPrice(form.getPrice());
+//            pepper.setMember(SETTINGUSERID);
+            pepper.setStockQuantity(form.getStockQuantity());
+            pepper.setImgUrl(filePath);
+            itemService.saveItem(pepper);
+            return "redirect:/items";
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
         return "redirect:/items";
     }
 
