@@ -13,6 +13,14 @@
 
     <div class="jumbotron">
         <h1>doaps</h1>
+
+        <p class="lead">회원가입,로그인</p>
+        <p>
+            <a class="btn btn-lg btn-secondary" th:onclick="|location.href='@{/members/add}'|">회원 가입</a>
+            <a class="btn btn-lg btn-secondary"
+               onclick="location.href='items.html'"th:onclick="|location.href='@{/login}'|" type="button">로그인</a>
+        </p>
+
         <p class="lead">회원 기능</p>
         <p>
             <a class="btn btn-lg btn-secondary" href="/members/new">회원 가입</a>
