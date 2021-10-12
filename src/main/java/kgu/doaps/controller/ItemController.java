@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.List;
 
@@ -25,9 +27,10 @@ public class ItemController {
     }
 
     @PostMapping("/items/new")
-    public String create(@RequestParam("img") MultipartFile files, PepperForm form) {
+    public String create(@RequestParam("img") MultipartFile files, PepperForm form, HttpServletRequest request) {
         try {
-            String baseDir = "C:\\ServerFiles";
+//            String baseDir = "static\\images";
+            String baseDir = request.getServletContext().getRealPath("/images");
             String filePath = baseDir + "\\" + files.getOriginalFilename();
             files.transferTo(new File(filePath));
 //            Authentication user = SecurityContextHolder.getContext().getAuthentication();
