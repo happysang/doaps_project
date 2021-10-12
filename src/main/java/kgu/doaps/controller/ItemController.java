@@ -27,7 +27,7 @@ public class ItemController {
     @PostMapping("/items/new")
     public String create(@RequestParam("img") MultipartFile files, PepperForm form) {
         try {
-            String baseDir = "C:\\Users\\seokgeun\\Documents\\ServerFiles";
+            String baseDir = "C:\\ServerFiles";
             String filePath = baseDir + "\\" + files.getOriginalFilename();
             files.transferTo(new File(filePath));
 //            Authentication user = SecurityContextHolder.getContext().getAuthentication();
