@@ -10,5 +10,5 @@ update - 개발 도중 특이점 발견하여 롤백. (사진만 업데이트하
 - MemberRepository의 findByOne 메소드 이름 변경 -> findById (메소드 명이 기능을 명확하게 나타내는 것 같지 않아서..)
 
 #### 10.16 3:40 혁상
-- 로그인 시 세션에 필요한 기능들 추가 (생성, 조회, 삭제)
-- SessionManager 추가
+- 로그인 시 세션에 필요한 기능직접 만듬 (생성, 조회, 삭제)
+- SessionManager 추가, HomeController 수정
