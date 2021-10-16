@@ -12,3 +12,10 @@ update - 개발 도중 특이점 발견하여 롤백. (사진만 업데이트하
 #### 10.16 3:40 혁상
 - 로그인 시 세션에 필요한 기능직접 만듬 (생성, 조회, 삭제)
 - SessionManager 추가, HomeController 수정
+
+#### 10.16 18:20 혁상
+- 직접 만든 세션 말고 http에서 제공해주는 세션을 이용해서 로그인 작동 구현
+- 30분동안 반응이 없으면 로그인이 풀림
+- SessionController (세션 확인하기 위해 - 지워도 상관없음), 
+  SessionConst 생성
+- HomeController, LoginController, application.yml 수정
