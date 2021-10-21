@@ -1,5 +1,6 @@
 package kgu.doaps.service;
 
+import kgu.doaps.domain.Address;
 import kgu.doaps.domain.Member;
 import kgu.doaps.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -34,5 +35,13 @@ public class MemberService {
 
     public Member findOne(Long memberId) {
         return memberRepository.findById(memberId);
+    }
+
+    @Transactional
+    public void updateMember(Long memberId, String name, Address address) {
+        Member findMember = memberRepository.findById(memberId);
+        findMember.setName(name);
+        findMember.setAddress(address);
+        //★성별,폰번호 등등 추가해줄것.
     }
 }

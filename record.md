@@ -1,7 +1,6 @@
 #### 10.11 21:40 석근
 Item create 시 이미지 파일도 첨부할 수 있도록 함.  
-update - 개발 도중 특이점 발견하여 롤백. (사진만 업데이트하는 팝업을 만들어야 함)  
-** 중요 : 일단 사진 받을 폴더는 로컬 저장소로 만들어놨으니 내문서에 ServerFiles 폴더 만드세요~   **  
+update - 개발 도중 특이점 발견하여 롤백. (사진만 업데이트하는 팝업을 만들어야 함)   
 수정한 파일 : Item 도메인, 컨트롤러, + 등록 html  + .yml(최대10MB까지만 올릴수있도록 제한)
 
 #### 10.14 3:50 혁상
@@ -19,3 +18,10 @@ update - 개발 도중 특이점 발견하여 롤백. (사진만 업데이트하
 - SessionController (세션 확인하기 위해 - 지워도 상관없음), 
   SessionConst 생성
 - HomeController, LoginController, application.yml 수정
+
+#### 10.22 01:00 석근
+Mypage -  내 정보 수정하기 + 내 주문 목록 보기 구현   
+MypageController 생성  및 template/mypage dir 생성 
+내 주문 목록 보기 구현을 위해 OrderRepo, OrderService 에 메소드 추가  
+내 정보 수정하기 구현을 위해 UpdateForm+ MemberService에 변경감지수정 메소드 추가 ( 후에 new 회원 가입 form에 맞춰서 수정 필요)  
+OrderRepo, OrderService, MemberService, loginHome.html 수정, 나머지파일들은 모두 이번에 새로 생성됨.
