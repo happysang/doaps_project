@@ -1,4 +1,4 @@
-package kgu.doaps.web;
+package kgu.doaps.session;
 
 import org.springframework.stereotype.Component;
 import javax.servlet.http.Cookie;

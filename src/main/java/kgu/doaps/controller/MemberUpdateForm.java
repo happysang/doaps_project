@@ -9,10 +9,9 @@ import javax.validation.constraints.NotEmpty;
 public class MemberUpdateForm {
     private Long id;
 
-//    @NotEmpty(message = "아이디 입력은 필수 입니다")
-//    private String loginId;
-    @NotEmpty(message = "비밀번호 입력은 필수 입니다")
-    private String password;
+
+//    @NotEmpty(message = "비밀번호 입력은 필수 입니다")
+//    private String password;
     @NotEmpty(message = "회원 이름 입력은 필수 입니다")
     private String name;
     @NotEmpty(message = "주소 입력은 필수 입니다")
