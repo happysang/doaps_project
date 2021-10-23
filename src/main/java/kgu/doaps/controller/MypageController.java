@@ -79,7 +79,7 @@ public class MypageController {
     }
 
     @GetMapping("/mypage/changeMemberStatus")
-    public String updateMember2(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
+    public String updateOnlyMemberStatus(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
         if (loginMember.getMemberStatus().equals(MemberStatus.BUYER)) {
             memberService.updateMemberStatus(loginMember.getId(), MemberStatus.SELLER);
             model.addAttribute("message", "판매 계정으로 계정 변경 합니다.");
