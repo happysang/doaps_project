@@ -37,7 +37,8 @@ public class ItemController {
     }
 
     @PostMapping("/items/new")
-    public String create(@RequestParam("img") MultipartFile files, PepperForm form, HttpServletRequest request) {
+    public String create(@RequestParam("img") MultipartFile files, PepperForm form, HttpServletRequest request,
+                         @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
         try {
 //            String baseDir = "static\\images";
             String baseDir = request.getServletContext().getRealPath("/images");
@@ -49,7 +50,7 @@ public class ItemController {
             Pepper pepper = new Pepper();
             pepper.setName(form.getName());
             pepper.setPrice(form.getPrice());
-//            pepper.setMember(SETTINGUSERID);
+            pepper.setMember(loginMember);
             pepper.setStockQuantity(form.getStockQuantity());
             pepper.setImgUrl(filePath);
             itemService.saveItem(pepper);
