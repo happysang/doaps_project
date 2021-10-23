@@ -2,6 +2,7 @@ package kgu.doaps.controller;
 
 import kgu.doaps.domain.Address;
 import kgu.doaps.domain.Member;
+import kgu.doaps.domain.MemberStatus;
 import kgu.doaps.domain.Order;
 import kgu.doaps.service.MemberService;
 import kgu.doaps.service.OrderService;
@@ -76,4 +77,19 @@ public class MypageController {
         //★성별,폰번호 등등 추가해줄것.
         return "redirect:/mypage";
     }
+
+    @GetMapping("/mypage/changeMemberStatus")
+    public String updateMember2(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
+        if (loginMember.getMemberStatus().equals(MemberStatus.BUYER)) {
+            memberService.updateMemberStatus(loginMember.getId(), MemberStatus.SELLER);
+            model.addAttribute("message", "판매 계정으로 계정 변경 합니다.");
+        } else {
+            memberService.updateMemberStatus(loginMember.getId(), MemberStatus.BUYER);
+            model.addAttribute("message", "일반 계정으로 계정 변경 합니다.");
+        }
+        model.addAttribute("redirectLink", "/mypage");
+        return  "error/errorMessage";
+    }
 }
+
+

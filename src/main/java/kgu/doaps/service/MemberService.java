@@ -2,6 +2,7 @@ package kgu.doaps.service;
 
 import kgu.doaps.domain.Address;
 import kgu.doaps.domain.Member;
+import kgu.doaps.domain.MemberStatus;
 import kgu.doaps.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -44,4 +45,13 @@ public class MemberService {
         findMember.setAddress(address);
         //★성별,폰번호 등등 추가해줄것.
     }
+
+    @Transactional
+    public void updateMemberStatus(Long memberId, MemberStatus memberStatus){
+        Member findMember = memberRepository.findById(memberId);
+        findMember.setMemberStatus(memberStatus);
+        System.out.println("상태변경완료 = " + findMember.getMemberStatus());
+    }
+
+
 }

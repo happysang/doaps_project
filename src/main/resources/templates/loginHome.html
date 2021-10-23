@@ -52,6 +52,7 @@
             <thead>
             <tr>
                 <th>#</th>
+                <th>제품 사진</th>
                 <th>상품명</th>
                 <th>가격</th>
                 <th>재고수량</th>
@@ -62,6 +63,7 @@
             <tbody>
             <tr th:each="item : ${items}">
                 <td th:text="${item.id}"></td>
+                <td>제품 사진 있을 곳...</td>
                 <td th:text="${item.name}"></td>
                 <td th:text="${item.price}"></td>
                 <td th:text="${item.stockQuantity}"></td>
