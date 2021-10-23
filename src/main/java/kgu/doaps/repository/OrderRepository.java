@@ -47,4 +47,9 @@ public class OrderRepository {
         return query.getResultList();
     }
 
+    public List<Order> findMyOrder(Long id) {
+        return em.createQuery("select o from Order o where o.member.id =:id", Order.class)
+                .setParameter("id", id)
+                .getResultList();
+    }
 }

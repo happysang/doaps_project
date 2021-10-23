@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>DOAPS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div class="container">
+    <p class="lead">마이페이지</p>
+    <p>
+        <a class="btn btn-lg btn-secondary" th:href="@{/mypage/{id}/edit (id=${member.id})}"
+>내정보 수정하기</a>
+
+        <a class="btn btn-lg btn-secondary" href="/mypage/myorder">내 주문 내역 보기</a>
+    </p>
+
+</div>
+
+</body>
+</html>
