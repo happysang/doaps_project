@@ -5,7 +5,7 @@ import kgu.doaps.domain.Member;
 import kgu.doaps.domain.Order;
 import kgu.doaps.service.MemberService;
 import kgu.doaps.service.OrderService;
-import kgu.doap.session.SessionConst;
+import kgu.doaps.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

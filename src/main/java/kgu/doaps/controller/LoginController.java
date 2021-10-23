@@ -2,7 +2,7 @@ package kgu.doaps.controller;
 
 import kgu.doaps.domain.Member;
 import kgu.doaps.service.LoginService;
-import kgu.doap.session.SessionConst;
+import kgu.doaps.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
