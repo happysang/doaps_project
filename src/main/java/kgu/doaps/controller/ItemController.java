@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.List;
@@ -54,7 +53,7 @@ public class ItemController {
             pepper.setStockQuantity(form.getStockQuantity());
             pepper.setImgUrl(filePath);
             itemService.saveItem(pepper);
-            return "redirect:/items";
+            return "redirect:/";
         } catch(Exception e) {
             e.printStackTrace();
         }
