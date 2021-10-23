@@ -1,6 +1,8 @@
 package kgu.doaps.controller;
 
 import kgu.doaps.domain.Member;
+import kgu.doaps.domain.item.Item;
+import kgu.doaps.service.ItemService;
 import kgu.doaps.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,16 +11,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import java.util.List;
+
 @Controller
 @Slf4j
 @RequiredArgsConstructor
 public class HomeController {
 
-    // private final SessionManager sessionManager;
+    private final ItemService itemService;
 
     @GetMapping("/")
     public String home(
             @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model){
+
+
+        List<Item> items = itemService.findItems();
+        model.addAttribute("items", items);
 
         //세션에 회원 데이터가 없으면 home
         if (loginMember == null){

@@ -33,6 +33,48 @@
             </p>
         </div>
 
+        <div class="jumbotron">
+            <p class="lead">상품 기능</p>
+            <p>
+                <a class="btn btn-lg btn-dark" href="/items/new">상품 등록</a>
+                <a class="btn btn-lg btn-dark" href="/items">상품 목록</a>
+            </p>
+            <p class="lead">주문 기능</p>
+            <p>
+                <a class="btn btn-lg btn-info" href="/order">상품 주문</a>
+                <a class="btn btn-lg btn-info" href="/orders">주문 내역</a>
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>제품 사진</th>
+                <th>상품명</th>
+                <th>가격</th>
+                <th>재고수량</th>
+                <th>판매자</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${items}">
+                <td th:text="${item.id}"></td>
+                <td>제품 사진 있을 곳...</td>
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.price}"></td>
+                <td th:text="${item.stockQuantity}"></td>
+                <td th:text="${item.member.loginId}"></td>
+                <td>
+                    <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}"
+                       class="btn btn-primary" role="button">수정</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
     <hr class="my-4">
 </div> <!-- /container -->
