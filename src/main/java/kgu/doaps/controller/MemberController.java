@@ -1,7 +1,9 @@
 package kgu.doaps.controller;
 
 import kgu.doaps.domain.Address;
+import kgu.doaps.domain.GenderStatus;
 import kgu.doaps.domain.Member;
+import kgu.doaps.domain.MemberStatus;
 import kgu.doaps.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,7 @@ public class MemberController {
         if (result.hasErrors()) {
             return "members/createMemberForm";
         }
+        System.out.println("form = " + form.getGenderStatus());
         Address address = new Address(form.getCity(), form.getStreet(),
                 form.getZipcode());
         Member member = new Member();
@@ -36,6 +39,9 @@ public class MemberController {
         member.setPassword(form.getPassword());
         member.setName(form.getName());
         member.setAddress(address);
+        member.setPhone(form.getPhone());
+        member.setGenderStatus(form.getGenderStatus());
+        member.setMemberStatus(form.getMemberStatus());
         memberService.join(member);
         return "redirect:/";
     }
