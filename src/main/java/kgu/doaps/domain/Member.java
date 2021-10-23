@@ -9,23 +9,29 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Getter @Setter
 public class Member {
+
     @Id @GeneratedValue
     @Column(name = "member_id")
-    private Long id; // db ID
+    private Long id; // 데이터베이스 ID
 
     @NotEmpty
     private String loginId; // 로그인 ID
+
     @NotEmpty
     private String password;
+
     @NotEmpty
     private String name;
 
+    @NotEmpty
+    private String phone;
+    
     @Embedded
     private Address address;
 
     @Enumerated(EnumType.STRING)
+    private GenderStatus genderStatus;
+
+    @Enumerated(EnumType.STRING)
     private MemberStatus memberStatus;
-
-    private String phone;  //핸드폰번호
-
 }

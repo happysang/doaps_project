@@ -25,3 +25,9 @@ MypageController 생성  및 template/mypage dir 생성
 내 주문 목록 보기 구현을 위해 OrderRepo, OrderService 에 메소드 추가  
 내 정보 수정하기 구현을 위해 UpdateForm+ MemberService에 변경감지수정 메소드 추가 ( 후에 new 회원 가입 form에 맞춰서 수정 필요)  
 OrderRepo, OrderService, MemberService, loginHome.html 수정, 나머지파일들은 모두 이번에 새로 생성됨.
+
+
+#### 10.23 14:40 혁상
+회원가입 폼 수정 완료
+회원 가입 폼에 맞게 회원가입 페이지, 컨트롤러 수정
+MemberForm.java, MemberController.java, createMemberForm.html 수정

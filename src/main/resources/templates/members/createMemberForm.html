@@ -39,6 +39,31 @@
                th:errors="*{name}">Incorrect date</p>
         </div>
 
+        <div class="form-group">
+            <label th:for="name">전화 번호</label>
+            <input type="text" th:field="*{phone}" class="form-control"
+                   placeholder="전화번호를 입력하세요"
+                   th:class="${#fields.hasErrors('phone')}? 'form-control fieldError' : 'form-control'">
+            <p th:if="${#fields.hasErrors('phone')}"
+               th:errors="*{phone}">Incorrect date</p>
+        </div>
+
+        <div class="form-group">
+            <label>성별</label>
+            <select th:field="*{genderStatus}" class="form-control">
+                <option value="MALE" selected="selected">남자</option>
+                <option value="FEMALE">여자</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>계정 타입</label>
+            <select  th:field="*{memberStatus}" class="form-control">
+                <option value="BUYER" selected="selected">일반 회원</option>
+                <option value="SELLER" >판매 회원</option>
+            </select>
+        </div>
+
 
         <div class="form-group">
             <label th:for="city">도시</label>
