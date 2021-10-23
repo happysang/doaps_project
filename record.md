@@ -36,3 +36,12 @@ OrderRepo, OrderService, MemberService, loginHome.html 수정, 나머지파일�
 회원가입 폼 수정 완료
 회원 가입 폼에 맞게 회원가입 페이지, 컨트롤러 수정
 MemberForm.java, MemberController.java, createMemberForm.html 수정
+
+#### 10.23 17:00 혁상
+홈이던 로그인 했을 때던 전체 아이템 목록이 바로 보이게 수정<br>
+- 상품 등록할 때 아이템의 member컬럼에 판매자 계정이 등록되게 함
+
+마이페이지 판매자 전환 기능 버튼 완료<br>
+loginHome.html, home.html, mypageController.java 중점적으로 수정
+홈페이지를 수정한 만큼 많은 부분이 수정되어 다 기재 불가..ㅎㅎ,,
+
