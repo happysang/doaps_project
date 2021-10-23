@@ -30,3 +30,9 @@ OrderRepo, OrderService, MemberService, loginHome.html 수정, 나머지파일�
 item/new 접근 시 판매자만 들어갈 수 있도록 구현  
 errorMessage를 alert로 띄우고 redirect를 설정하여 보내게 설정 (다른곳에도활용가능)
 templates/error/errorMessage.html / ItemController.java
+OrderRepo, OrderService, MemberService, loginHome.html 수정, 나머지파일들은 모두 이번에 새로 생성됨.
+
+#### 10.23 14:40 혁상
+회원가입 폼 수정 완료
+회원 가입 폼에 맞게 회원가입 페이지, 컨트롤러 수정
+MemberForm.java, MemberController.java, createMemberForm.html 수정
