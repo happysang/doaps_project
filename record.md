@@ -24,4 +24,9 @@ Mypage -  내 정보 수정하기 + 내 주문 목록 보기 구현
 MypageController 생성  및 template/mypage dir 생성 
 내 주문 목록 보기 구현을 위해 OrderRepo, OrderService 에 메소드 추가  
 내 정보 수정하기 구현을 위해 UpdateForm+ MemberService에 변경감지수정 메소드 추가 ( 후에 new 회원 가입 form에 맞춰서 수정 필요)  
-OrderRepo, OrderService, MemberService, loginHome.html 수정, 나머지파일들은 모두 이번에 새로 생성됨.
+OrderRepo, OrderService, MemberService, loginHome.html 수정, 나머지파일들은 모두 이번에 새로 생성됨.  
+
+#### 10.23 14:30 석근
+item/new 접근 시 판매자만 들어갈 수 있도록 구현  
+errorMessage를 alert로 띄우고 redirect를 설정하여 보내게 설정 (다른곳에도활용가능)
+templates/error/errorMessage.html / ItemController.java

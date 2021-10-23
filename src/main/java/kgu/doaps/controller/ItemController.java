@@ -1,8 +1,11 @@
 package kgu.doaps.controller;
 
+import kgu.doaps.domain.Member;
+import kgu.doaps.domain.MemberStatus;
 import kgu.doaps.domain.item.Item;
 import kgu.doaps.domain.item.Pepper;
 import kgu.doaps.service.ItemService;
+import kgu.doaps.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +24,15 @@ public class ItemController {
     private final ItemService itemService;
 
     @GetMapping("/items/new")
-    public String createForm(Model model) {
+    public String createForm(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
+        System.out.println("loginMember.getMemberStatus() = " + loginMember.getMemberStatus());
+        if (loginMember == null) return "home";
+
+        if (loginMember.getMemberStatus() == MemberStatus.BUYER) {
+            model.addAttribute("message", "판매자 등록을 해야 합니다.");
+            model.addAttribute("redirectLink", "/mypage");
+            return "error/errorMessage";
+        }
         model.addAttribute("form", new PepperForm());
         return "items/createItemForm";
     }
