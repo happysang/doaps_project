@@ -78,17 +78,19 @@ public class ItemController {
         form.setName(item.getName());
         form.setPrice(item.getPrice());
         form.setStockQuantity(item.getStockQuantity());
-
+        form.setImgUrl(item.getImgUrl());
         model.addAttribute("form", form);
         return "items/updateItemForm";
     }
 
     @PostMapping(value = "/items/{itemId}/edit")
-    public String updateItem(@ModelAttribute("form") PepperForm form) {
+    public String updateItem(@ModelAttribute("form") PepperForm form,
+                             @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
         Pepper pepper = new Pepper();
         pepper.setId(form.getId());
         pepper.setName(form.getName());
         pepper.setPrice(form.getPrice());
+        pepper.setMember(loginMember);
         pepper.setStockQuantity(form.getStockQuantity());
         itemService.saveItem(pepper);
         return "redirect:/items";
