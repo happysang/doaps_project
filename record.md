@@ -43,5 +43,14 @@ MemberForm.java, MemberController.java, createMemberForm.html 수정
 
 마이페이지 판매자 전환 기능 버튼 완료<br>
 loginHome.html, home.html, mypageController.java 중점적으로 수정
-홈페이지를 수정한 만큼 많은 부분이 수정되어 다 기재 불가..ㅎㅎ,,
+홈페이지를 수정한 만큼 많은 부분이 수정되어 다 기재 불가..ㅎㅎ,,  
 
+#### 10.28 21:00 석근
+판매자용->내가올린 상품 보기 메뉴 추가  
+memberStatus에 판단 후 판매자메뉴 보임/숨김 추가  
+itemService,Repo / MypageController / mypage template 수정  
+
+#### 10.28 23:30 석근
+내 판매상품 -> 통계 기능 추가  
+통계기능에는 각 판매상품별로 구매자 정보 및 total수익, 판매량을 보여줌( item domain에 판매량 추가함)  
+OrderRepo, Service / Item.java - 판매량관련로직 / itemStats.html
