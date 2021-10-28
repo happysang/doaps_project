@@ -15,9 +15,11 @@
         <a class="btn btn-lg btn-secondary" href="/mypage/changeMemberStatus">계정타입 전환하기</a>
     </p>
     <p> </p>
-    <p> 판매자만 쓰는 메뉴 </p>
-    <a class="btn btn-lg btn-secondary" href="/items/new">상품등록하기</a>
-    <a class="btn btn-lg btn-secondary" href="/mypage/myitem">내가 올린 상품만 보기 </a>
+    <div th:if="${member.memberStatus == T(kgu.doaps.domain.MemberStatus).SELLER}">
+        <p> 판매자만 쓰는 메뉴 </p>
+        <a class="btn btn-lg btn-secondary" href="/items/new">상품등록하기</a>
+        <a class="btn btn-lg btn-secondary" href="/mypage/myitem">내가 올린 상품만 보기 </a>
+    </div>
 </div>
 
 </body>
