@@ -24,7 +24,6 @@ public class ItemController {
 
     @GetMapping("/items/new")
     public String createForm(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
-        System.out.println("loginMember.getMemberStatus() = " + loginMember.getMemberStatus());
         if (loginMember == null) return "home";
 
         if (loginMember.getMemberStatus() == MemberStatus.BUYER) {
@@ -59,7 +58,7 @@ public class ItemController {
             e.printStackTrace();
         }
 
-        return "redirect:/items";
+        return "redirect:/mypage";
     }
 
     @GetMapping("/items")
@@ -91,7 +90,7 @@ public class ItemController {
         pepper.setPrice(form.getPrice());
         pepper.setStockQuantity(form.getStockQuantity());
         itemService.saveItem(pepper);
-        return "redirect:/items";
+        return "redirect:/mypage";
     }
 
 }

@@ -1,5 +1,6 @@
 package kgu.doaps.repository;
 
+import kgu.doaps.domain.Order;
 import kgu.doaps.domain.item.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -28,6 +29,11 @@ public class ItemRepository {
                 .getResultList();
     }
 
+    public List<Item> findMyItem(Long id) {
+        return em.createQuery("select i from Item i where i.member.id =:id", Item.class)
+                .setParameter("id", id)
+                .getResultList();
+    }
     /*
     추가할 메서드
      */
