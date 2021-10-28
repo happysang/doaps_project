@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+    <div>
+        <div> 총 통계
+            <h4 th:text="|총 판매량 ${totalSales}|"></h4>
+            <h4 th:text="|총 판매수익 ${totalMoney}|"></h4>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>도시</th>
+                <th>성별</th>
+                <th>구매가격</th>
+                <th>구매일자</th>
+                <th>연령(아직 도메인에는 없음)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.member.address?.city}"></td>
+                <td th:text="${order.member.genderStatus}"></td>
+                <td th:text="${order.getTotalPrice()}"></td>
+                <td th:text="${order.orderDate}"></td>
+                <td>500살</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>

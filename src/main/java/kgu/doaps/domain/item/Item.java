@@ -27,6 +27,9 @@ public abstract class Item {
     private Member member;
 
     private String imgUrl;
+    
+    private int sales; //판매수량도 추가 (굳이 추가해준 이유는 로직이 너무복잡해서 추적번거로움)
+
     //==비즈니스 로직 ==//
     /*
      * stock 증가
@@ -45,4 +48,7 @@ public abstract class Item {
         }
         this.stockQuantity = restStock;
     }
+    
+    public void addSales(int quantity) { this.sales += quantity; }
+    public void removeSales(int quantity) { this.sales -= quantity; }
 }

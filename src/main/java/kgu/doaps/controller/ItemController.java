@@ -2,9 +2,12 @@ package kgu.doaps.controller;
 
 import kgu.doaps.domain.Member;
 import kgu.doaps.domain.MemberStatus;
+import kgu.doaps.domain.Order;
+import kgu.doaps.domain.OrderStatus;
 import kgu.doaps.domain.item.Item;
 import kgu.doaps.domain.item.Pepper;
 import kgu.doaps.service.ItemService;
+import kgu.doaps.service.OrderService;
 import kgu.doaps.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,6 +24,7 @@ import java.util.List;
 public class ItemController {
 
     private final ItemService itemService;
+    private final OrderService orderService;
 
     @GetMapping("/items/new")
     public String createForm(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
@@ -93,4 +97,28 @@ public class ItemController {
         return "redirect:/mypage";
     }
 
+    /*
+    통계
+     */
+    @GetMapping("/items/{itemId}/stats")
+    public String itemStats(@PathVariable("itemId") Long itemId, Model model) {
+        // 1. 아이템 정보 가져오기
+        Pepper item = (Pepper) itemService.findOne(itemId);
+        // 2. 아이템을 산 Order 에서 Order 정보 싹 가져온 후 CANCEL된애들 빼주기
+        List<Order> orders = orderService.findByItem(itemId);
+        orders.removeIf(order -> (order.getStatus() == OrderStatus.CANCEL)); //취소된 Order 빼주기 람다식
+
+        //3. 종합통계는  따로 구해서 해주기
+        int totalSales = item.getSales();
+        int totalMoney=0;
+        for (Order order : orders) {
+            totalMoney+=order.getTotalPrice();
+        }
+
+
+        model.addAttribute("orders", orders);
+        model.addAttribute("totalSales", totalSales);
+        model.addAttribute("totalMoney", totalMoney);
+        return "items/itemStats";
+    }
 }

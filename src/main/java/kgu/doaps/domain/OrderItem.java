@@ -33,11 +33,12 @@ public class OrderItem {
         orderItem.setCount(count);
 
         item.removeStock(count);
+        item.addSales(count);
         return orderItem;
     }
 
     //==비즈니스 로직==//
-    public void cancel() { getItem().addStock(count); }
+    public void cancel() { getItem().addStock(count);  getItem().removeSales(count);}
 
     //==조회 로직==//
     /*
