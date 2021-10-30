@@ -3,10 +3,12 @@ package kgu.doaps.controller;
 import kgu.doaps.domain.Member;
 import kgu.doaps.domain.Order;
 import kgu.doaps.domain.item.Item;
+import kgu.doaps.domain.item.Pepper;
 import kgu.doaps.repository.OrderSearch;
 import kgu.doaps.service.ItemService;
 import kgu.doaps.service.MemberService;
 import kgu.doaps.service.OrderService;
+import kgu.doaps.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,19 +23,22 @@ public class OrderController {
     private final MemberService memberService;
     private final ItemService itemService;
 
-    @GetMapping("/order")
-    public String createForm(Model model){
-        List<Member> members = memberService.findMembers();
-        List<Item> items = itemService.findItems();
+    @GetMapping("/order/{orderId}")
+    public String createForm(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
+                             @PathVariable("orderId") Long orderId, Model model){
+//        List<Member> members = memberService.findMembers();
+//        List<Item> items = itemService.findItems();
+//        model.addAttribute("members", members);
+//        model.addAttribute("items", items);
 
-        model.addAttribute("members", members);
-        model.addAttribute("items", items);
-
+        Pepper item = (Pepper) itemService.findOne(orderId);
+        model.addAttribute("item", item);
+        model.addAttribute("loginmember", loginMember);
         return "order/orderForm";
     }
 
     @PostMapping("/order")
-    public String order(@RequestParam("memberId") Long memberId,  //@RequestParam("html select태그의 name부분에 해당")
+    public String order(@RequestParam("memberId") Long memberId,  //@RequestParam("html select태그의 name부분에 해당)
                         @RequestParam("itemId") Long itemId, //여기서는 파라미터만 넘겨줘서 영속 개체인 상태에서 처리를 할 수 있게 한다.
                         @RequestParam("count") int count){
         orderService.order(memberId, itemId, count);
