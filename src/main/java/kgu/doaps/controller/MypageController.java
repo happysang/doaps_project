@@ -4,6 +4,8 @@ import kgu.doaps.domain.Address;
 import kgu.doaps.domain.Member;
 import kgu.doaps.domain.MemberStatus;
 import kgu.doaps.domain.Order;
+import kgu.doaps.domain.item.Item;
+import kgu.doaps.service.ItemService;
 import kgu.doaps.service.MemberService;
 import kgu.doaps.service.OrderService;
 import kgu.doaps.session.SessionConst;
@@ -22,6 +24,7 @@ public class MypageController {
 
     private final OrderService orderService;
     private final MemberService memberService;
+    private final ItemService itemService;
 
     @GetMapping("/mypage")
     public String mypageHome(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model,
@@ -89,6 +92,22 @@ public class MypageController {
         }
         model.addAttribute("redirectLink", "/mypage");
         return  "error/errorMessage";
+    }
+
+    ///////판매자만 쓰는 메뉴 ///////////
+    @GetMapping("/mypage/myitem")
+    public String myItem(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
+        if (loginMember == null) return "home";
+
+        if (loginMember.getMemberStatus() == MemberStatus.BUYER) {
+            model.addAttribute("message", "판매자 등록을 해야 합니다.");
+            model.addAttribute("redirectLink", "/mypage");
+            return "error/errorMessage";
+        }
+        List<Item> items = itemService.findMyItem(loginMember.getId());
+        model.addAttribute("items", items);
+        return "mypage/myitem";
+
     }
 }
 

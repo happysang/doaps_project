@@ -2,6 +2,7 @@ package kgu.doaps.repository;
 
 import kgu.doaps.domain.Member;
 import kgu.doaps.domain.Order;
+import kgu.doaps.domain.OrderItem;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
@@ -47,9 +48,24 @@ public class OrderRepository {
         return query.getResultList();
     }
 
-    public List<Order> findMyOrder(Long id) {
+    public List<Order> findMyOrder(Long userId) {
         return em.createQuery("select o from Order o where o.member.id =:id", Order.class)
-                .setParameter("id", id)
+                .setParameter("id", userId)
                 .getResultList();
+    }
+
+    public List<Order> findByItem(Long itemId) {
+        List<OrderItem> orderItems = em.createQuery("select oi from OrderItem oi where oi.item.id = :itemId", OrderItem.class)
+                .setParameter("itemId", itemId)
+                .getResultList();
+        // itemId로 orderItems찾은 후 Order를 찾아서 리턴함
+        // ★한번에 여러개를 시키도록 코드를 변경할 경우 Order가 여러번 찾아지기 떄문에 요녀석도 같이 변경해야한다.~~
+        List<Order> orders = new ArrayList<>();
+
+        for (OrderItem orderItem : orderItems) {
+            orders.add(em.find(Order.class, orderItem.getOrder().getId()));
+        }
+
+        return orders;
     }
 }

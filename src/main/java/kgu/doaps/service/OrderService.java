@@ -69,4 +69,7 @@ public class OrderService {
     }
 
     public List<Order> findMyOrder(Long id) { return orderRepository.findMyOrder(id); }
+
+    public List<Order> findByItem(Long id) { return orderRepository.findByItem(id); }
+
 }
