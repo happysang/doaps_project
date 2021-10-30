@@ -7,6 +7,7 @@
 <body>
 
 <div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
     <p class="lead">마이페이지</p>
     <p> 공통 메뉴 </p>
     <p>
@@ -15,11 +16,12 @@
         <a class="btn btn-lg btn-secondary" href="/mypage/changeMemberStatus">계정타입 전환하기</a>
     </p>
     <p> </p>
-    <div th:if="${member.memberStatus == T(kgu.doaps.domain.MemberStatus).SELLER}">
-        <p> 판매자만 쓰는 메뉴 </p>
-        <a class="btn btn-lg btn-secondary" href="/items/new">상품등록하기</a>
-        <a class="btn btn-lg btn-secondary" href="/mypage/myitem">내가 올린 상품만 보기 </a>
-    </div>
+<!--    <div th:if="${member.memberStatus == T(kgu.doaps.domain.MemberStatus).SELLER}">-->
+<!--        <p> 판매자만 쓰는 메뉴 </p>-->
+<!--        <a class="btn btn-lg btn-secondary" href="/items/new">상품등록하기</a>-->
+<!--        <a class="btn btn-lg btn-secondary" href="/mypage/myitem">내가 올린 상품만 보기 </a>-->
+<!--    </div>-->
+    <div th:replace="fragments/footer :: footer" />
 </div>
 
 </body>

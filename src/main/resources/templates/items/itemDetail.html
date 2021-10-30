@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>DOAPS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+<div class="container">
+
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+    <div>
+        사진 : 사진 잇을 곳<br>
+        상품명 : <p th:text="${item.name}"></p>
+        가격 : <p th:text="${item.price}"></p>
+        재고 : <p th:text="${item.stockQuantity}"></p>
+        판매자 : <p th:text="${item.member.loginId}"></p>
+        <div th:replace="fragments/footer :: footer" />
+    </div>
+
+    <button> 구매 </button>
+</div> <!-- /container -->
+
+</body>
+</html>

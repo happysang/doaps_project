@@ -123,4 +123,11 @@ public class ItemController {
         model.addAttribute("totalMoney", totalMoney);
         return "items/itemStats";
     }
+
+    @GetMapping(value = "/items/{id}/detail")
+    public String itemDetail(@PathVariable("id") Long itemId, Model model){
+        Pepper item = (Pepper) itemService.findOne(itemId);
+        model.addAttribute("item", item);
+        return "items/itemDetail";
+    }
 }

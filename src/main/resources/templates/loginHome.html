@@ -1,24 +1,22 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="fragments/header :: header">
+    <title>DOAPS</title>
     <meta charset="utf-8">
     <link th:href="@{/css/bootstrap.min.css}"
           href="../css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container" style="max-width: 600px">
+
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+
     <div class="py-5 text-center">
         <h2>홈 화면</h2>
     </div>
     <h4 class="mb-3" th:text="|로그인: ${member.name}|">로그인 사용자 이름</h4>
     <hr class="my-4">
     <div class="row">
-        <div class="col">
-            <button class="w-100 btn btn-secondary btn-lg" type="button"
-                    th:onclick="|location.href='@{/items}'|">
-                상품 관리
-            </button>
-        </div>
         <div class="col">
             <form th:action="@{/logout}" method="post">
                 <button class="w-100 btn btn-dark btn-lg"
@@ -34,11 +32,16 @@
         </div>
 
         <div class="jumbotron">
-            <p class="lead">상품 기능</p>
-            <p>
-                <a class="btn btn-lg btn-dark" href="/items/new">상품 등록</a>
-                <a class="btn btn-lg btn-dark" href="/items">상품 목록</a>
-            </p>
+            <div th:if="${member.memberStatus == T(kgu.doaps.domain.MemberStatus).SELLER}">
+                <p class="lead">상품 기능</p>
+                <p>
+                    <a class="btn btn-lg btn-secondary" href="/mypage/myitem">내가 올린 상품만 보기 </a>
+                    <a class="btn btn-lg btn-dark" href="/items/new">상품 등록</a>
+<!--                    <a class="btn btn-lg btn-dark" th:onclick="|location.href='@{/items}'|">상품 관리</a>-->
+    <!--                <a class="btn btn-lg btn-dark" href="/items">상품 목록</a>-->
+                </p>
+            </div>
+
             <p class="lead">주문 기능</p>
             <p>
                 <a class="btn btn-lg btn-info" href="/order">상품 주문</a>
@@ -63,20 +66,26 @@
             <tbody>
             <tr th:each="item : ${items}">
                 <td th:text="${item.id}"></td>
-                <td>제품 사진 있을 곳...</td>
-                <td th:text="${item.name}"></td>
+                <td>제품 사진 있을 곳</td>
+                <td>
+                    <a href="#" th:href="@{/items/{id}/detail (id=${item.id}) }" th:text="${item.name}"></a>
+                </td>
                 <td th:text="${item.price}"></td>
                 <td th:text="${item.stockQuantity}"></td>
                 <td th:text="${item.member.loginId}"></td>
-                <td>
-                    <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}"
-                       class="btn btn-primary" role="button">수정</a>
-                </td>
+
+                <div th:if="${member.loginId ==  item.member.loginId}">
+                    <td>
+                        <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}"
+                           class="btn btn-primary" role="button">수정</a>
+                    </td>
+                </div>
             </tr>
             </tbody>
         </table>
     </div>
     <hr class="my-4">
+    <div th:replace="fragments/footer :: footer" />
 </div> <!-- /container -->
 </body>
 </html>
