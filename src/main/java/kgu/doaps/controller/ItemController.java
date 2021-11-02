@@ -43,12 +43,9 @@ public class ItemController {
     public String create(@RequestParam("img") MultipartFile files, PepperForm form, HttpServletRequest request,
                          @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
         try {
-//            String baseDir = "static\\images";
             String baseDir = request.getServletContext().getRealPath("/images");
             String filePath = baseDir + "\\" + files.getOriginalFilename();
             files.transferTo(new File(filePath));
-//            Authentication user = SecurityContextHolder.getContext().getAuthentication();
-//            String sellerID = user.getName();
 
             Pepper pepper = new Pepper();
             pepper.setName(form.getName());
@@ -56,6 +53,14 @@ public class ItemController {
             pepper.setMember(loginMember);
             pepper.setStockQuantity(form.getStockQuantity());
             pepper.setImgUrl(filePath);
+
+            pepper.setImportDate(form.getImportDate());
+            pepper.setProcessDate(form.getProcessDate());
+            pepper.setOrigin(form.getOrigin());
+            pepper.setVariety(form.getVariety());
+            pepper.setColor(form.getColor());
+            pepper.setSpicy(form.getSpicy());
+
             itemService.saveItem(pepper);
             return "redirect:/";
         } catch(Exception e) {
@@ -82,6 +87,14 @@ public class ItemController {
         form.setPrice(item.getPrice());
         form.setStockQuantity(item.getStockQuantity());
         form.setImgUrl(item.getImgUrl());
+
+        form.setImportDate(item.getImportDate());
+        form.setProcessDate(item.getProcessDate());
+        form.setOrigin(item.getOrigin());
+        form.setVariety(item.getVariety());
+        form.setColor(item.getColor());
+        form.setSpicy(item.getSpicy());
+
         model.addAttribute("form", form);
         return "items/updateItemForm";
     }
@@ -95,6 +108,14 @@ public class ItemController {
         pepper.setPrice(form.getPrice());
         pepper.setMember(loginMember);
         pepper.setStockQuantity(form.getStockQuantity());
+
+        pepper.setImportDate(form.getImportDate());
+        pepper.setProcessDate(form.getProcessDate());
+        pepper.setOrigin(form.getOrigin());
+        pepper.setVariety(form.getVariety());
+        pepper.setColor(form.getColor());
+        pepper.setSpicy(form.getSpicy());
+
         itemService.saveItem(pepper);
         return "redirect:/mypage";
     }

@@ -16,6 +16,16 @@
         가격 : <p th:text="${item.price}"></p>
         재고 : <p th:text="${item.stockQuantity}"></p>
         판매자 : <p th:text="${item.member.loginId}"></p>
+
+        수입일 : <p th:text="${item.importDate}"></p>
+        가공일 : <p th:text="${item.processDate}"></p>
+        원산지 : <p th:text="${item.origin}"></p>
+        품종 : <p th:text="${item.variety}"></p>
+        맵기 정도 (SHU) : <p th:text="${item.spicy}"></p>
+        <table>
+            <tr><th th:bgcolor="${item.color}">&nbsp;&nbsp; 색 &nbsp;&nbsp;</th></tr>
+        </table>
+
         <div th:replace="fragments/footer :: footer" />
     </div>
 

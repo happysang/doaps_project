@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.time.YearMonth;
 
 @Component
 @RequiredArgsConstructor
@@ -47,6 +48,11 @@ public class TestDataInit {
         pepper.setPrice(10000);
         pepper.setMember(member1);
         pepper.setStockQuantity(1000);
+        pepper.setSpicy(1000);
+        pepper.setVariety("청양");
+        pepper.setImportDate(YearMonth.of(2021,2));
+        pepper.setProcessDate(YearMonth.of(2021,3));
+        pepper.setColor("#bf1d1d");
         itemService.saveItem(pepper);
 
     }
