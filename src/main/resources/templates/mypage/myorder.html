@@ -26,6 +26,11 @@
                 <td th:text="${item.orderItems[0].count}"></td>
                 <td th:text="${item.status}"></td>
                 <td th:text="${item.orderDate}"></td>
+                <td>
+                    <a th:if="${item.status.name() == 'ORDER'}" href="#"
+                       th:href="'javascript:cancel('+${item.id}+')'"
+                       class="btn btn-danger">CANCEL</a>
+                </td>
 
             </tr>
             </tbody>
@@ -34,4 +39,13 @@
     <div th:replace="fragments/footer :: footer"/>
 </div>
 </body>
+<script>
+    function cancel(id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/orders/" + id + "/cancel");
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
 </html>
