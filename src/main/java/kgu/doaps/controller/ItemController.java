@@ -43,7 +43,7 @@ public class ItemController {
     public String create(@RequestParam("img") MultipartFile files, PepperForm form, HttpServletRequest request,
                          @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
         try {
-            String baseDir = request.getServletContext().getRealPath("/images");
+            String baseDir = request.getServletContext().getRealPath("/");
             String filePath = baseDir + "\\" + files.getOriginalFilename();
             files.transferTo(new File(filePath));
 
@@ -148,6 +148,7 @@ public class ItemController {
     @GetMapping(value = "/items/{id}/detail")
     public String itemDetail(@PathVariable("id") Long itemId, Model model){
         Pepper item = (Pepper) itemService.findOne(itemId);
+        System.out.println(item.getImgUrl());
         model.addAttribute("item", item);
         return "items/itemDetail";
     }

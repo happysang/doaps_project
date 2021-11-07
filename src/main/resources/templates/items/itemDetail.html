@@ -11,7 +11,8 @@
 
     <div th:replace="fragments/bodyHeader :: bodyHeader" />
     <div>
-        사진 : 사진 잇을 곳<br>
+        사진 : <img th:src="${item.getImgUrl()}">
+        <Context path= th:src="${item.getImgUrl()} reloadable = "true"></Context>
         상품명 : <p th:text="${item.name}"></p>
         가격 : <p th:text="${item.price}"></p>
         재고 : <p th:text="${item.stockQuantity}"></p>
