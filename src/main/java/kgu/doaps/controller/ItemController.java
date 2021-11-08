@@ -150,7 +150,6 @@ public class ItemController {
     @GetMapping(value = "/items/{id}/detail")
     public String itemDetail(@PathVariable("id") Long itemId, Model model){
         Pepper item = (Pepper) itemService.findOne(itemId);
-        System.out.println(item.getImgUrl());
         model.addAttribute("item", item);
         return "items/itemDetail";
     }
