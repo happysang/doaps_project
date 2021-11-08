@@ -54,7 +54,7 @@ public class ItemController {
             pepper.setPrice(form.getPrice());
             pepper.setMember(loginMember);
             pepper.setStockQuantity(form.getStockQuantity());
-            pepper.setImgUrl(filePath);
+            pepper.setImgUrl(attach_path+filename);
 
             pepper.setImportDate(form.getImportDate());
             pepper.setProcessDate(form.getProcessDate());

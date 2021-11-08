@@ -154,7 +154,7 @@
                         <div class="articleThumb">
                             <a href="#" th:href="@{/items/{id}/detail (id=${item.id}) }" th:text="${item.name}"></a>
                         </div>
-                        <h3 class="articleTitle"><a href="" th:text="${item.id}"></a></h3>
+                        <h3 class="articleTitle"><img th:src="@{${item.getImgUrl()}}"></a></h3>
                     </article>
                 </div>
             </div>
