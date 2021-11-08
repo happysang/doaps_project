@@ -43,9 +43,11 @@ public class ItemController {
     public String create(@RequestParam("img") MultipartFile files, PepperForm form, HttpServletRequest request,
                          @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
         try {
-            String baseDir = request.getServletContext().getRealPath("/");
-            String filePath = baseDir + "\\" + files.getOriginalFilename();
-            files.transferTo(new File(filePath));
+            String root_path = request.getSession().getServletContext().getRealPath("/");
+            String attach_path = "upload/";
+            String filename = files.getOriginalFilename();
+            File f = new File(root_path + attach_path + filename);
+            files.transferTo(f);
 
             Pepper pepper = new Pepper();
             pepper.setName(form.getName());
