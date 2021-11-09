@@ -52,20 +52,17 @@
                             <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
                             <div class="nav navbar-nav" th:if="${member.loginId}">
                                 <li><a th:onclick="|location.href='@{/mypage}'|"  style="cursor:pointer;">내 페이지</a></li>
-
+                                <li><a th:onclick="|location.href='@{/items/new}'|"  style="cursor:pointer;">상품 등록</a></li>
                                 <form th:action="@{/logout}" method="post" class="nav navbar-nav">
                                     <li><button type="submit" style="cursor:pointer;">로그 아웃</button></li>
                                 </form>
-
 
                             </div>
                             <div class="nav navbar-nav" th:unless="${member.loginId}">
                                 <li><a th:onclick="|location.href='@{/login}'|"  style="cursor:pointer;">로그인</a></li>
                                 <li><a th:onclick="|location.href='@{/members/new}'|"  style="cursor:pointer;" >회원가입</a></li>
                             </div>
-                            <li><a th:onclick="|location.href='@{/items/new}'|"  style="cursor:pointer;">상품 등록</a></li>
-
-
+                            
                         </ul>
                     </div><!-- /.navbar-collapse -->
                     <ul class="nino-iconsGroup nav navbar-nav">
