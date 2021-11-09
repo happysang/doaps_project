@@ -1,56 +1,57 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>DOAPS</title>
     <meta charset="utf-8">
-    <link th:href="@{/css/bootstrap.min.css}"
-          href="../css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .container {
-            max-width: 560px;
-        }
-        .field-error {
-            border-color: #dc3545;
-            color: #dc3545;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/css/loginutil.css}" rel="stylesheet" type="text/css" href="css/loginutil.css">
+    <link th:href="@{/css/login.css}" rel="stylesheet" type="text/css" href="css/login.css">
 </head>
-<body>
-<div class="container">
-    <div class="py-5 text-center">
-        <h2>로그인</h2>
+<body style="background-color: #666666;">
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" th:action th:object="${loginForm}" method="post">
+					<span class="login100-form-title p-b-43">
+						LOGIN
+					</span>
+
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" th:field="*{loginId}" name="loginId" required>
+                    <span class="focus-input100"></span>
+                    <span class="label-input100">ID</span>
+                </div>
+
+                <div class="wrap-input100 validate-input" >
+                    <input class="input100" type="password" name="pass" th:field="*{password}" required>
+                    <span class="focus-input100"></span>
+                    <span class="label-input100">Password</span>
+                </div>
+
+                <div class="flex-sb-m w-full p-t-3 p-b-32">
+                    <div>
+                        <a href="/members/new" class="txt1">
+                            계정 만들러 가기
+                        </a>
+                    </div>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button type="submit" class="login100-form-btn">
+                        Login
+                    </button>
+                </div>
+
+            </form>
+
+            <div class="login100-more">
+            </div>
+
+
+        </div>
     </div>
-    <form action="item.html" th:action th:object="${loginForm}" method="post">
-        <div th:if="${#fields.hasGlobalErrors()}">
-            <p class="field-error" th:each="err : ${#fields.globalErrors()}"
-               th:text="${err}">전체 오류 메시지</p>
-        </div>
-        <div>
-            <label for="loginId">로그인 ID</label>
-            <input type="text" id="loginId" th:field="*{loginId}" class="formcontrol"
-                   th:errorclass="field-error">
-            <div class="field-error" th:errors="*{loginId}" />
-        </div>
-        <div>
-            <label for="password">비밀번호</label>
-            <input type="password" id="password" th:field="*{password}"
-                   class="form-control"
-                   th:errorclass="field-error">
-            <div class="field-error" th:errors="*{password}" />
-        </div>
-        <hr class="my-4">
-        <div class="row">
-            <div class="col">
-                <button class="w-100 btn btn-primary btn-lg" type="submit">
-                    로그인</button>
-            </div>
-            <div class="col">
-                <button class="w-100 btn btn-secondary btn-lg"
-                        onclick="location.href='items.html'"
-                        th:onclick="|location.href='@{/}'|"
-                        type="button">취소</button>
-            </div>
-        </div>
-    </form>
-</div> <!-- /container -->
+</div>
+
 </body>
 </html>
