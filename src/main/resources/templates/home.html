@@ -54,7 +54,7 @@
                                 <li><a th:onclick="|location.href='@{/mypage}'|"  style="cursor:pointer;">내 페이지</a></li>
 
                                 <form th:action="@{/logout}" method="post" class="nav navbar-nav">
-                                    <li><button th:onclick="|location.href='@{/mypage}'|" type="submit" style="cursor:pointer;">로그 아웃</button></li>
+                                    <li><button type="submit" style="cursor:pointer;">로그 아웃</button></li>
                                 </form>
 
 
@@ -63,7 +63,7 @@
                                 <li><a th:onclick="|location.href='@{/login}'|"  style="cursor:pointer;">로그인</a></li>
                                 <li><a th:onclick="|location.href='@{/members/new}'|"  style="cursor:pointer;" >회원가입</a></li>
                             </div>
-                                <li><a href="#nino-ourTeam">상품 보기</a></li>
+                            <li><a th:onclick="|location.href='@{/items/new}'|"  style="cursor:pointer;">상품 등록</a></li>
 
 
                         </ul>
@@ -144,7 +144,7 @@
     <div class="container">
         <h2 class="nino-sectionHeading">
             <span class="nino-subHeading">Our stories</span>
-            Latest Blog
+            최근 올라온 상품
         </h2>
         <div class="sectionContent">
             <div class="row">
