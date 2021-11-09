@@ -1,399 +1,676 @@
+<!--<!DOCTYPE html>-->
+
+
+
+<!--</head>-->
+
+<!--<body data-target="#nino-navbar" data-spy="scroll">-->
+
+<!--&lt;!&ndash; Header-->
+<!--================================================== &ndash;&gt;-->
+<!--<header id="nino-header">-->
+<!--    <div id="nino-headerInner">-->
+<!--        <nav id="nino-navbar" class="navbar navbar-default" role="navigation">-->
+<!--            <div class="container">-->
+
+<!--                &lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+<!--                <div class="navbar-header">-->
+<!--                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nino-navbar-collapse">-->
+<!--                        <span class="sr-only">Toggle navigation</span>-->
+<!--                        <span class="icon-bar"></span>-->
+<!--                        <span class="icon-bar"></span>-->
+<!--                        <span class="icon-bar"></span>-->
+<!--                    </button>-->
+<!--                    <a class="navbar-brand" href="/">DOAPS</a>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+<!--                <div class="nino-menuItem pull-right">-->
+<!--                    <div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">-->
+<!--                        <ul class="nav navbar-nav">-->
+<!--                            <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>-->
+<!--                            <div class="nav navbar-nav" th:if="${member.loginId}">-->
+<!--                                <li><a th:onclick="|location.href='@{/mypage}'|"  style="cursor:pointer;">내 페이지</a></li>-->
+<!--                                <li><a th:onclick="|location.href='@{/items/new}'|"  style="cursor:pointer;">상품 등록</a></li>-->
+<!--                                <form th:action="@{/logout}" method="post" class="nav navbar-nav">-->
+<!--                                    <li><button type="submit" style="cursor:pointer;">로그 아웃</button></li>-->
+<!--                                </form>-->
+
+<!--                            </div>-->
+<!--                            <div class="nav navbar-nav" th:unless="${member.loginId}">-->
+<!--                                <li><a th:onclick="|location.href='@{/login}'|"  style="cursor:pointer;">로그인</a></li>-->
+<!--                                <li><a th:onclick="|location.href='@{/members/new}'|"  style="cursor:pointer;" >회원가입</a></li>-->
+<!--                            </div>-->
+
+<!--                        </ul>-->
+<!--                    </div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+<!--                    <ul class="nino-iconsGroup nav navbar-nav">-->
+<!--                        <li><a href="#"><i class="mdi mdi-cart-outline nino-icon"></i></a></li>-->
+<!--                        <li><a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+<!--        </nav>-->
+
+<!--        <section id="nino-slider" class="carousel slide container" data-ride="carousel">-->
+
+<!--            &lt;!&ndash; Wrapper for slides &ndash;&gt;-->
+<!--            <div class="carousel-inner" role="listbox">-->
+<!--                <div class="item active">-->
+<!--                    <h2 class="nino-sectionHeading">-->
+<!--                        <span class="nino-subHeading">Creative Template</span>-->
+<!--                        Welcome <br>to MoGo-->
+<!--                    </h2>-->
+<!--                    <a href="#" class="nino-btn">Learn more</a>-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                    <h2 class="nino-sectionHeading">-->
+<!--                        <span class="nino-subHeading">Creative Template</span>-->
+<!--                        Welcome <br>to MoGo-->
+<!--                    </h2>-->
+<!--                    <a href="#" class="nino-btn">Learn more</a>-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                    <h2 class="nino-sectionHeading">-->
+<!--                        <span class="nino-subHeading">Creative Template</span>-->
+<!--                        Welcome <br>to MoGo-->
+<!--                    </h2>-->
+<!--                    <a href="#" class="nino-btn">Learn more</a>-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                    <h2 class="nino-sectionHeading">-->
+<!--                        <span class="nino-subHeading">Creative Template</span>-->
+<!--                        Welcome <br>to MoGo-->
+<!--                    </h2>-->
+<!--                    <a href="#" class="nino-btn">Learn more</a>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Indicators &ndash;&gt;-->
+<!--            <ol class="carousel-indicators clearfix">-->
+<!--                <li data-target="#nino-slider" data-slide-to="0" class="active">-->
+<!--                    <div class="inner">-->
+<!--                        <span class="number">01</span> intro-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li data-target="#nino-slider" data-slide-to="1">-->
+<!--                    <div class="inner">-->
+<!--                        <span class="number">02</span> work-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li data-target="#nino-slider" data-slide-to="2">-->
+<!--                    <div class="inner">-->
+<!--                        <span class="number">03</span> about-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li data-target="#nino-slider" data-slide-to="3">-->
+<!--                    <div class="inner">-->
+<!--                        <span class="number">04</span> contacts-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ol>-->
+<!--        </section>-->
+<!--    </div>-->
+<!--</header>&lt;!&ndash;/#header&ndash;&gt;-->
+
+
+<!--&lt;!&ndash; Latest Blog-->
+<!--   ================================================== &ndash;&gt;-->
+<!--<section id="nino-latestBlog">-->
+<!--    <div class="container">-->
+<!--        <h2 class="nino-sectionHeading">-->
+<!--            <span class="nino-subHeading">Our stories</span>-->
+<!--            최근 올라온 상품-->
+<!--        </h2>-->
+<!--        <div class="sectionContent">-->
+<!--            <div class="row">-->
+<!--                <tr th:each="item : ${items}">-->
+<!--                <div class="col-md-4 col-sm-4">-->
+<!--                    <article>-->
+<!--                        <div class="articleThumb">-->
+<!--                            <a href="#" th:href="@{/items/{id}/detail (id=${item.id}) }" th:text="${item.name}"></a>-->
+<!--                        </div>-->
+<!--                        <h3 class="articleTitle"><img th:src="@{${item.getImgUrl()}}"></a></h3>-->
+<!--                    </article>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>&lt;!&ndash;/#nino-latestBlog&ndash;&gt;-->
+
+
+<!--&lt;!&ndash; Counting-->
+<!--================================================== &ndash;&gt;-->
+<!--<section id="nino-counting">-->
+<!--    <div class="container">-->
+<!--        <div layout="row" class="verticalStretch">-->
+<!--            <div class="item">-->
+<!--                <div class="number">42</div>-->
+<!--                <div class="text">Web Design Projects</div>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <div class="number">123</div>-->
+<!--                <div class="text">happy client</div>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <div class="number">15</div>-->
+<!--                <div class="text">award winner</div>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <div class="number">99</div>-->
+<!--                <div class="text">cup of coffee</div>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <div class="number">24</div>-->
+<!--                <div class="text">members</div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>&lt;!&ndash;/#nino-counting&ndash;&gt;-->
+
+<!--&lt;!&ndash; Services-->
+
+
+
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="ninodezign.com, ninodezign@gmail.com">
-    <meta name="copyright" content="ninodezign.com">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+    <!-- title -->
     <title>DOAPS</title>
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="images/ico/favicon.jpg">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-
-    <!-- css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css" />
-    <link rel="stylesheet" type="text/css" href="css/unslider.css" />
-    <link rel="stylesheet" type="text/css" href="css/template.css" />
+    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="assets/css/owl.carousel.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!-- mean menu css -->
+    <link rel="stylesheet" href="assets/css/meanmenu.min.css">
+    <!-- main style -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="assets/css/responsive.css">
 
 </head>
+<body>
 
-<body data-target="#nino-navbar" data-spy="scroll">
-
-<!-- Header
-================================================== -->
-<header id="nino-header">
-    <div id="nino-headerInner">
-        <nav id="nino-navbar" class="navbar navbar-default" role="navigation">
-            <div class="container">
-
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nino-navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">DOAPS</a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="nino-menuItem pull-right">
-                    <div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-                            <div class="nav navbar-nav" th:if="${member.loginId}">
-                                <li><a th:onclick="|location.href='@{/mypage}'|"  style="cursor:pointer;">내 페이지</a></li>
-                                <li><a th:onclick="|location.href='@{/items/new}'|"  style="cursor:pointer;">상품 등록</a></li>
-                                <form th:action="@{/logout}" method="post" class="nav navbar-nav">
-                                    <li><button type="submit" style="cursor:pointer;">로그 아웃</button></li>
-                                </form>
-
-                            </div>
-                            <div class="nav navbar-nav" th:unless="${member.loginId}">
-                                <li><a th:onclick="|location.href='@{/login}'|"  style="cursor:pointer;">로그인</a></li>
-                                <li><a th:onclick="|location.href='@{/members/new}'|"  style="cursor:pointer;" >회원가입</a></li>
-                            </div>
-                            
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                    <ul class="nino-iconsGroup nav navbar-nav">
-                        <li><a href="#"><i class="mdi mdi-cart-outline nino-icon"></i></a></li>
-                        <li><a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a></li>
-                    </ul>
-                </div>
-            </div><!-- /.container-fluid -->
-        </nav>
-
-        <section id="nino-slider" class="carousel slide container" data-ride="carousel">
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <h2 class="nino-sectionHeading">
-                        <span class="nino-subHeading">Creative Template</span>
-                        Welcome <br>to MoGo
-                    </h2>
-                    <a href="#" class="nino-btn">Learn more</a>
-                </div>
-                <div class="item">
-                    <h2 class="nino-sectionHeading">
-                        <span class="nino-subHeading">Creative Template</span>
-                        Welcome <br>to MoGo
-                    </h2>
-                    <a href="#" class="nino-btn">Learn more</a>
-                </div>
-                <div class="item">
-                    <h2 class="nino-sectionHeading">
-                        <span class="nino-subHeading">Creative Template</span>
-                        Welcome <br>to MoGo
-                    </h2>
-                    <a href="#" class="nino-btn">Learn more</a>
-                </div>
-                <div class="item">
-                    <h2 class="nino-sectionHeading">
-                        <span class="nino-subHeading">Creative Template</span>
-                        Welcome <br>to MoGo
-                    </h2>
-                    <a href="#" class="nino-btn">Learn more</a>
-                </div>
-            </div>
-
-            <!-- Indicators -->
-            <ol class="carousel-indicators clearfix">
-                <li data-target="#nino-slider" data-slide-to="0" class="active">
-                    <div class="inner">
-                        <span class="number">01</span> intro
-                    </div>
-                </li>
-                <li data-target="#nino-slider" data-slide-to="1">
-                    <div class="inner">
-                        <span class="number">02</span> work
-                    </div>
-                </li>
-                <li data-target="#nino-slider" data-slide-to="2">
-                    <div class="inner">
-                        <span class="number">03</span> about
-                    </div>
-                </li>
-                <li data-target="#nino-slider" data-slide-to="3">
-                    <div class="inner">
-                        <span class="number">04</span> contacts
-                    </div>
-                </li>
-            </ol>
-        </section>
+<!--PreLoader-->
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
     </div>
-</header><!--/#header-->
+</div>
+<!--PreLoader Ends-->
 
-
-<!-- Latest Blog
-   ================================================== -->
-<section id="nino-latestBlog">
-    <div class="container">
-        <h2 class="nino-sectionHeading">
-            <span class="nino-subHeading">Our stories</span>
-            최근 올라온 상품
-        </h2>
-        <div class="sectionContent">
-            <div class="row">
-                <tr th:each="item : ${items}">
-                <div class="col-md-4 col-sm-4">
-                    <article>
-                        <div class="articleThumb">
-                            <a href="#" th:href="@{/items/{id}/detail (id=${item.id}) }" th:text="${item.name}"></a>
-                        </div>
-                        <h3 class="articleTitle"><img th:src="@{${item.getImgUrl()}}"></a></h3>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!--/#nino-latestBlog-->
-
-
-<!-- Counting
-================================================== -->
-<section id="nino-counting">
-    <div class="container">
-        <div layout="row" class="verticalStretch">
-            <div class="item">
-                <div class="number">42</div>
-                <div class="text">Web Design Projects</div>
-            </div>
-            <div class="item">
-                <div class="number">123</div>
-                <div class="text">happy client</div>
-            </div>
-            <div class="item">
-                <div class="number">15</div>
-                <div class="text">award winner</div>
-            </div>
-            <div class="item">
-                <div class="number">99</div>
-                <div class="text">cup of coffee</div>
-            </div>
-            <div class="item">
-                <div class="number">24</div>
-                <div class="text">members</div>
-            </div>
-        </div>
-    </div>
-</section><!--/#nino-counting-->
-
-<!-- Services
-================================================== -->
-<section id="nino-services">
-    <div class="container">
-        <h2 class="nino-sectionHeading">
-            <span class="nino-subHeading">We work with</span>
-            Amazing Services
-        </h2>
-        <div class="sectionContent">
-            <div class="fw" layout="row">
-                <div class="col-md-4 col-sm-6 item ">
-                    <div layout="row">
-                        <i class="mdi mdi-apple-keyboard-command nino-icon fsr"></i>
-                        <div>
-                            <h4 class="nino-serviceTitle">Photography</h4>
-                            <p>Photography is the science, art and practice of creating durable images by recording light or other electromagnetic radiation</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 item ">
-                    <div layout="row">
-                        <i class="mdi mdi-blender nino-icon fsr"></i>
-                        <div>
-                            <h4 class="nino-serviceTitle">Web Design</h4>
-                            <p>Web design encompasses many different skills and disciplines in the production and maintenance of websites.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 item ">
-                    <div layout="row">
-                        <i class="mdi mdi-bookmark-plus-outline nino-icon fsr"></i>
-                        <div>
-                            <h4 class="nino-serviceTitle">Creativity</h4>
-                            <p>Creativity is a phenomenon whereby something new and somehow valuable is formed. The created item may be intangible or a physical object.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 item ">
-                    <div layout="row">
-                        <i class="mdi mdi-buffer nino-icon fsr"></i>
-                        <div>
-                            <h4 class="nino-serviceTitle">seo</h4>
-                            <p>Search engine optimization (SEO) is the process of affecting the visibility of a website or a web page in a web search engine's unpaid results.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 item ">
-                    <div layout="row">
-                        <i class="mdi mdi-desktop-mac nino-icon fsr"></i>
-                        <div>
-                            <h4 class="nino-serviceTitle">Css/Html</h4>
-                            <p>HyperText Markup Language, commonly abbreviated as HTML, is the standard markup language used to create web pages. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 item ">
-                    <div layout="row">
-                        <i class="mdi mdi-diamond nino-icon fsr"></i>
-                        <div>
-                            <h4 class="nino-serviceTitle">digital</h4>
-                            <p>With digital signals, system noise, provided it is not too great, will not change the quantification whereas with signals handled using analog processing.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!--/#nino-services-->
-
-
-<!-- Map
-================================================== -->
-<section id="nino-map">
-    <div class="container">
-        <h2 class="nino-sectionHeading">
-            <i class="mdi mdi-map-marker nino-icon"></i>
-            <span class="text">Open map</span>
-            <span class="text" style="display: none;">Close map</span>
-        </h2>
-        <div class="mapWrap">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d79466.26604960626!2d-0.19779784176715043!3d51.50733004537892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C+UK!3m2!1d51.5073509!2d-0.1277583!5e0!3m2!1sen!2s!4v1469206441744" width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-    </div>
-</section><!--/#nino-map-->
-
-<!-- Footer
-================================================== -->
-<footer id="footer">
+<!-- header -->
+<div class="top-header-area" id="sticker">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="colInfo">
-                    <div class="footerLogo">
-                        <a href="#" >MoGo</a>
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="index.html">
+                            <img src="assets/img/logo.png" alt="">
+                        </a>
                     </div>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                    <div class="nino-followUs">
-                        <div class="totalFollow"><span>15k</span> followers</div>
-                        <div class="socialNetwork">
-                            <span class="text">Follow Us: </span>
-                            <a href="" class="nino-icon"><i class="mdi mdi-facebook"></i></a>
-                            <a href="" class="nino-icon"><i class="mdi mdi-twitter"></i></a>
-                            <a href="" class="nino-icon"><i class="mdi mdi-instagram"></i></a>
-                            <a href="" class="nino-icon"><i class="mdi mdi-pinterest"></i></a>
-                            <a href="" class="nino-icon"><i class="mdi mdi-google-plus"></i></a>
-                            <a href="" class="nino-icon"><i class="mdi mdi-youtube-play"></i></a>
-                            <a href="" class="nino-icon"><i class="mdi mdi-dribbble"></i></a>
-                            <a href="" class="nino-icon"><i class="mdi mdi-tumblr"></i></a>
+                    <!-- logo -->
+
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li><a href="/">홈</a></li>
+                            <li><a href="/login">로그인</a></li>
+                            <li><a href="/members/new">회원 가입</a></li>
+                            <li><a href="/mypage">마이 페이지</a></li>
+                            <li><a href="/items/new">상품 등록</a></li>
+                            <li><a href="#">Pages</a>
+                                <ul class="sub-menu">
+                                    <li><a href="404.html">404 page</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="checkout.html">Check Out</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="news.html">News</a></li>
+                                    <li><a href="shop.html">Shop</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="news.html">News</a>
+                                <ul class="sub-menu">
+                                    <li><a href="news.html">News</a></li>
+                                    <li><a href="single-news.html">Single News</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="shop.html">Shop</a>
+                                <ul class="sub-menu">
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="checkout.html">Check Out</a></li>
+                                    <li><a href="single-product.html">Single Product</a></li>
+                                    <li><a href="cart.html">Cart</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <input type="text" placeholder="Keywords">
+                        <button type="submit">Search <i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search area -->
+
+<!-- hero area -->
+<div class="hero-area hero-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 offset-lg-2 text-center">
+                <div class="hero-text">
+                    <div class="hero-text-tablecell">
+                        <p class="subtitle">PEPPER</p>
+                        <h1>국내 최초 고추 도소매 사이트</h1>
+                        <div class="hero-btns">
+                            <a href="shop.html" class="boxed-btn">Fruit Collection</a>
+                            <a href="contact.html" class="bordered-btn">Contact Us</a>
                         </div>
                     </div>
-                    <form action="" class="nino-subscribeForm">
-                        <div class="input-group input-group-lg">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
-                            <span class="input-group-btn">
-									<button class="btn btn-success" type="submit">Subscribe</button>
-								</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end hero area -->
+
+<!-- features list section -->
+<div class="list-section pt-80 pb-80">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="list-box d-flex align-items-center">
+                    <div class="list-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Fast Shipping</h3>
+                        <p>Within a week</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="list-box d-flex align-items-center">
+                    <div class="list-icon">
+                        <i class="fas fa-phone-volume"></i>
+                    </div>
+                    <div class="content">
+                        <h3>24/7 Support</h3>
+                        <p>Get support all day</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="list-box d-flex justify-content-start align-items-center">
+                    <div class="list-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Refund</h3>
+                        <p>Get refund within 3 days!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- end features list section -->
+
+<!-- product section -->
+<div class="product-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="section-title">
+                    <h3><span class="orange-text">최신</span> 상품</h3>
+                    <p>방금 등록된 새로운 상품을 만나보세요!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center" th:each="item : ${items}">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="single-product.html"><img th:src="@{${item.getImgUrl()}}"></a>
+                    </div>
+                    <h3 th:text="${item.name}"></h3>
+                    <span>Per Kg</span>
+                    <p class="product-price" th:text="${item.price}"></p>
+                    <a href="#" th:href="@{/items/{id}/detail (id=${item.id}) }" class="cart-btn"><i class="fas fa-shopping-cart"></i> 자세히 보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end product section -->
+
+<!-- cart banner section -->
+<section class="cart-banner pt-100 pb-100">
+    <div class="container">
+        <div class="row clearfix">
+            <!--Image Column-->
+            <div class="image-column col-lg-6">
+                <div class="image">
+                    <div class="price-box">
+                        <div class="inner-price">
+                                <span class="price">
+                                    <strong>30%</strong> <br> off per kg
+                                </span>
                         </div>
+                    </div>
+                    <img src="assets/img/a.jpg" alt="">
+                </div>
+            </div>
+            <!--Content Column-->
+            <div class="content-column col-lg-6">
+                <h3><span class="orange-text">Deal</span> of the month</h3>
+                <h4>Hikan Strwaberry</h4>
+                <div class="text">Quisquam minus maiores repudiandae nobis, minima saepe id, fugit ullam similique! Beatae, minima quisquam molestias facere ea. Perspiciatis unde omnis iste natus error sit voluptatem accusant</div>
+                <!--Countdown Timer-->
+                <div class="time-counter"><div class="time-countdown clearfix" data-countdown="2020/2/01"><div class="counter-column"><div class="inner"><span class="count">00</span>Days</div></div> <div class="counter-column"><div class="inner"><span class="count">00</span>Hours</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Mins</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Secs</div></div></div></div>
+                <a href="cart.html" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end cart banner section -->
+
+<!-- testimonail-section -->
+<div class="testimonail-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="testimonial-sliders">
+                    <div class="single-testimonial-slider">
+                        <div class="client-avater">
+                            <img src="assets/img/avaters/avatar1.png" alt="">
+                        </div>
+                        <div class="client-meta">
+                            <h3>Saira Hakim <span>Local shop owner</span></h3>
+                            <p class="testimonial-body">
+                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+                            </p>
+                            <div class="last-icon">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-slider">
+                        <div class="client-avater">
+                            <img src="assets/img/avaters/avatar2.png" alt="">
+                        </div>
+                        <div class="client-meta">
+                            <h3>David Niph <span>Local shop owner</span></h3>
+                            <p class="testimonial-body">
+                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+                            </p>
+                            <div class="last-icon">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-slider">
+                        <div class="client-avater">
+                            <img src="assets/img/avaters/avatar3.png" alt="">
+                        </div>
+                        <div class="client-meta">
+                            <h3>Jacob Sikim <span>Local shop owner</span></h3>
+                            <p class="testimonial-body">
+                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+                            </p>
+                            <div class="last-icon">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end testimonail-section -->
+
+<!-- advertisement section -->
+<div class="abt-section mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="abt-bg">
+                    <a href="https://www.youtube.com/watch?v=DBLlFWYcIGQ" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="abt-text">
+                    <p class="top-sub">Since Year 1999</p>
+                    <h2>We are <span class="orange-text">Fruitkha</span></h2>
+                    <p>Etiam vulputate ut augue vel sodales. In sollicitudin neque et massa porttitor vestibulum ac vel nisi. Vestibulum placerat eget dolor sit amet posuere. In ut dolor aliquet, aliquet sapien sed, interdum velit. Nam eu molestie lorem.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente facilis illo repellat veritatis minus, et labore minima mollitia qui ducimus.</p>
+                    <a href="about.html" class="boxed-btn mt-4">know more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end advertisement section -->
+
+<!-- shop banner -->
+<section class="shop-banner">
+    <div class="container">
+        <h3>December sale is on! <br> with big <span class="orange-text">Discount...</span></h3>
+        <div class="sale-percent"><span>Sale! <br> Upto</span>50% <span>off</span></div>
+        <a href="shop.html" class="cart-btn btn-lg">Shop Now</a>
+    </div>
+</section>
+<!-- end shop banner -->
+
+<!-- latest news -->
+<div class="latest-news pt-150 pb-150">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="section-title">
+                    <h3><span class="orange-text">Our</span> News</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="single-latest-news">
+                    <a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+                    <div class="news-text-box">
+                        <h3><a href="single-news.html">You will vainly look for fruit on it in autumn.</a></h3>
+                        <p class="blog-meta">
+                            <span class="author"><i class="fas fa-user"></i> Admin</span>
+                            <span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+                        </p>
+                        <p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
+                        <a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-latest-news">
+                    <a href="single-news.html"><div class="latest-news-bg news-bg-2"></div></a>
+                    <div class="news-text-box">
+                        <h3><a href="single-news.html">A man's worth has its season, like tomato.</a></h3>
+                        <p class="blog-meta">
+                            <span class="author"><i class="fas fa-user"></i> Admin</span>
+                            <span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+                        </p>
+                        <p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
+                        <a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
+                <div class="single-latest-news">
+                    <a href="single-news.html"><div class="latest-news-bg news-bg-3"></div></a>
+                    <div class="news-text-box">
+                        <h3><a href="single-news.html">Good thoughts bear good fresh juicy fruit.</a></h3>
+                        <p class="blog-meta">
+                            <span class="author"><i class="fas fa-user"></i> Admin</span>
+                            <span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+                        </p>
+                        <p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
+                        <a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <a href="news.html" class="boxed-btn">More News</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end latest news -->
+
+<!-- footer -->
+<div class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box about-widget">
+                    <h2 class="widget-title">About us</h2>
+                    <p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box get-in-touch">
+                    <h2 class="widget-title">Get in Touch</h2>
+                    <ul>
+                        <li>34/8, East Hukupara, Gifirtok, Sadan.</li>
+                        <li>support@fruitkha.com</li>
+                        <li>+00 111 222 3333</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box pages">
+                    <h2 class="widget-title">Pages</h2>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Shop</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box subscribe">
+                    <h2 class="widget-title">Subscribe</h2>
+                    <p>Subscribe to our mailing list to get the latest updates.</p>
+                    <form action="index.html">
+                        <input type="email" placeholder="Email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="colInfo">
-                    <h3 class="nino-colHeading">Blogs</h3>
-                    <ul class="listArticles">
-                        <li layout="row" class="verticalCenter">
-                            <a class="articleThumb fsr" href="#"><img src="images/our-blog/img-4.jpg" alt=""></a>
-                            <div class="info">
-                                <h3 class="articleTitle"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
-                                <div class="date">Jan 9, 2016</div>
-                            </div>
-                        </li>
-                        <li layout="row" class="verticalCenter">
-                            <a class="articleThumb fsr" href="#"><img src="images/our-blog/img-5.jpg" alt=""></a>
-                            <div class="info">
-                                <h3 class="articleTitle"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
-                                <div class="date">Jan 9, 2016</div>
-                            </div>
-                        </li>
-                        <li layout="row" class="verticalCenter">
-                            <a class="articleThumb fsr" href="#"><img src="images/our-blog/img-6.jpg" alt=""></a>
-                            <div class="info">
-                                <h3 class="articleTitle"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
-                                <div class="date">Jan 9, 2016</div>
-                            </div>
-                        </li>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+
+<!-- copyright -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
+            </div>
+            <div class="col-lg-6 text-right col-md-12">
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="colInfo">
-                    <h3 class="nino-colHeading">instagram</h3>
-                    <div class="instagramImages clearfix">
-                        <a href="#"><img src="images/instagram/img-1.jpg" alt=""></a>
-                        <a href="#"><img src="images/instagram/img-2.jpg" alt=""></a>
-                        <a href="#"><img src="images/instagram/img-3.jpg" alt=""></a>
-                        <a href="#"><img src="images/instagram/img-4.jpg" alt=""></a>
-                        <a href="#"><img src="images/instagram/img-5.jpg" alt=""></a>
-                        <a href="#"><img src="images/instagram/img-6.jpg" alt=""></a>
-                        <a href="#"><img src="images/instagram/img-7.jpg" alt=""></a>
-                        <a href="#"><img src="images/instagram/img-8.jpg" alt=""></a>
-                        <a href="#"><img src="images/instagram/img-9.jpg" alt=""></a>
-                        <a href="#"><img src="images/instagram/img-3.jpg" alt=""></a>
-                        <a href="#"><img src="images/instagram/img-4.jpg" alt=""></a>
-                        <a href="#"><img src="images/instagram/img-5.jpg" alt=""></a>
-                    </div>
-                    <a href="#" class="morePhoto">View more photos</a>
-                </div>
-            </div>
         </div>
-        <div class="nino-copyright">Copyright &copy; 2016 <a target="_blank" href="http://www.ninodezign.com/" title="Ninodezign.com - Top quality open source resources for web developer and web designer">Ninodezign.com</a>. All Rights Reserved. <br/> MoGo free PSD template by <a href="https://www.behance.net/laaqiq">Laaqiq</a></div>
     </div>
-</footer><!--/#footer-->
+</div>
+<!-- end copyright -->
 
-<!-- Search Form - Display when click magnify icon in menu
-================================================== -->
-<form action="" id="nino-searchForm">
-    <input type="text" placeholder="Search..." class="form-control nino-searchInput">
-    <i class="mdi mdi-close nino-close"></i>
-</form><!--/#nino-searchForm-->
-
-<!-- Scroll to top
-================================================== -->
-<a href="#" id="nino-scrollToTop">Go to Top</a>
-
-<!-- javascript -->
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
-<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery.hoverdir.js"></script>
-<script type="text/javascript" src="js/modernizr.custom.97074.js"></script>
-<script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript" src="js/unslider-min.js"></script>
-<script type="text/javascript" src="js/template.js"></script>
-
-<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<!-- css3-mediaqueries.js for IE less than 9 -->
-<!--[if lt IE 9]>
-<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-<![endif]-->
+<!-- jquery -->
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap -->
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- count down -->
+<script src="assets/js/jquery.countdown.js"></script>
+<!-- isotope -->
+<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+<!-- waypoints -->
+<script src="assets/js/waypoints.js"></script>
+<!-- owl carousel -->
+<script src="assets/js/owl.carousel.min.js"></script>
+<!-- magnific popup -->
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<!-- mean menu -->
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<!-- sticker js -->
+<script src="assets/js/sticker.js"></script>
+<!-- main js -->
+<script src="assets/js/main.js"></script>
 
 </body>
 </html>

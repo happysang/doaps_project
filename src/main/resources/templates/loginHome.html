@@ -89,3 +89,46 @@
 </div> <!-- /container -->
 </body>
 </html>
+
+
+
+
+
+
+
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:replace="fragments/header :: header">-->
+<!--    <title>DOAPS</title>-->
+<!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<div class="container">-->
+
+<!--    <div th:replace="fragments/bodyHeader :: bodyHeader" />-->
+<!--    <div>-->
+<!--        사진 : <img th:src="@{../../}+${item.getImgUrl()}" height="300" width="300">-->
+<!--        상품명 : <p th:text="${item.name}"></p>-->
+<!--        가격 : <p th:text="${item.price}"></p>-->
+<!--        재고 : <p th:text="${item.stockQuantity}"></p>-->
+<!--        판매자 : <p th:text="${item.member.loginId}"></p>-->
+
+<!--        수입일 : <p th:text="${item.importDate}"></p>-->
+<!--        가공일 : <p th:text="${item.processDate}"></p>-->
+<!--        원산지 : <p th:text="${item.origin}"></p>-->
+<!--        품종 : <p th:text="${item.variety}"></p>-->
+<!--        맵기 정도 (SHU) : <p th:text="${item.spicy}"></p>-->
+<!--        <table>-->
+<!--            <tr><th th:bgcolor="${item.color}">&nbsp;&nbsp; 색 &nbsp;&nbsp;</th></tr>-->
+<!--        </table>-->
+
+<!--        <div th:replace="fragments/footer :: footer" />-->
+<!--    </div>-->
+
+<!--    <a href="#" th:href="@{/order/{itemId} (itemId=${item.id})}"> 주문 </a>-->
+<!--</div> &lt;!&ndash; /container &ndash;&gt;-->
+
+<!--</body>-->
+<!--</html>-->
