@@ -1,77 +1,16 @@
-<!--<!DOCTYPE HTML>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head th:replace="fragments/header :: header">-->
-<!--    <title>DOAPS</title>-->
-<!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
-<!--</head>-->
-
-<!--<body>-->
-
-<!--<div class="container">-->
-
-<!--    <div th:replace="fragments/bodyHeader :: bodyHeader" />-->
-<!--    <div>-->
-<!--        사진 : <img th:src="@{../../}+${item.getImgUrl()}" height="300" width="300">-->
-<!--        상품명 : <p th:text="${item.name}"></p>-->
-<!--        가격 : <p th:text="${item.price}"></p>-->
-<!--        재고 : <p th:text="${item.stockQuantity}"></p>-->
-<!--        판매자 : <p th:text="${item.member.loginId}"></p>-->
-
-<!--        수입일 : <p th:text="${item.importDate}"></p>-->
-<!--        가공일 : <p th:text="${item.processDate}"></p>-->
-<!--        원산지 : <p th:text="${item.origin}"></p>-->
-<!--        품종 : <p th:text="${item.variety}"></p>-->
-<!--        맵기 정도 (SHU) : <p th:text="${item.spicy}"></p>-->
-<!--        <table>-->
-<!--            <tr><th th:bgcolor="${item.color}">&nbsp;&nbsp; 색 &nbsp;&nbsp;</th></tr>-->
-<!--        </table>-->
-
-<!--        <div th:replace="fragments/footer :: footer" />-->
-<!--    </div>-->
-
-<!--    <a href="#" th:href="@{/order/{itemId} (itemId=${item.id})}"> 주문 </a>-->
-<!--</div> &lt;!&ndash; /container &ndash;&gt;-->
-
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
-    <!-- title -->
-    <title>Single Product</title>
-
-    <!-- favicon -->
-    <link rel="shortcut icon" type="image/png" href="../../assets/img/favicon.png">
-    <!-- google font -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="../../assets/css/all.min.css">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
-    <!-- owl carousel -->
-    <link rel="stylesheet" href="../../assets/css/owl.carousel.css">
-    <!-- magnific popup -->
-    <link rel="stylesheet" href="../../assets/css/magnific-popup.css">
-    <!-- animate css -->
-    <link rel="stylesheet" href="../../assets/css/animate.css">
-    <!-- mean menu css -->
-    <link rel="stylesheet" href="../../assets/css/meanmenu.min.css">
-    <!-- main style -->
-    <link rel="stylesheet" href="../../assets/css/main.css">
-    <!-- responsive -->
-    <link rel="stylesheet" href="../../assets/css/responsive.css">
-
+<head th:replace="fragments/header :: header">
+    <title>DOAPS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+
 <body>
+<script> var tt = "상세 제품 소개"</script>
+<div th:replace="fragments/bodyHeader :: bodyHeader" />
+
 
 <!--PreLoader-->
 <div class="loader">
@@ -168,20 +107,6 @@
 </div>
 <!-- end search arewa -->
 
-<!-- breadcrumb-section -->
-<div class="breadcrumb-section breadcrumb-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="breadcrumb-text">
-                    <p>See more Details</p>
-                    <h1>상세 제품 소개</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end breadcrumb section -->
 
 <!-- single product -->
 <div class="single-product mt-150 mb-150">
@@ -367,42 +292,3 @@
 
 </body>
 </html>
-
-
-
-<!--<!DOCTYPE HTML>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head th:replace="fragments/header :: header">-->
-<!--    <title>DOAPS</title>-->
-<!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
-<!--</head>-->
-
-<!--<body>-->
-
-<!--<div class="container">-->
-
-<!--    <div th:replace="fragments/bodyHeader :: bodyHeader" />-->
-<!--    <div>-->
-<!--        사진 : <img th:src="@{../../}+${item.getImgUrl()}" height="300" width="300">-->
-<!--        상품명 : <p th:text="${item.name}"></p>-->
-<!--        가격 : <p th:text="${item.price}"></p>-->
-<!--        재고 : <p th:text="${item.stockQuantity}"></p>-->
-<!--        판매자 : <p th:text="${item.member.loginId}"></p>-->
-
-<!--        수입일 : <p th:text="${item.importDate}"></p>-->
-<!--        가공일 : <p th:text="${item.processDate}"></p>-->
-<!--        원산지 : <p th:text="${item.origin}"></p>-->
-<!--        품종 : <p th:text="${item.variety}"></p>-->
-<!--        맵기 정도 (SHU) : <p th:text="${item.spicy}"></p>-->
-<!--        <table>-->
-<!--            <tr><th th:bgcolor="${item.color}">&nbsp;&nbsp; 색 &nbsp;&nbsp;</th></tr>-->
-<!--        </table>-->
-
-<!--        <div th:replace="fragments/footer :: footer" />-->
-<!--    </div>-->
-
-<!--    <a href="#" th:href="@{/order/{itemId} (itemId=${item.id})}"> 주문 </a>-->
-<!--</div> &lt;!&ndash; /container &ndash;&gt;-->
-
-<!--</body>-->
-<!--</html>-->

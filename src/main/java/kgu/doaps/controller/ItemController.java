@@ -8,6 +8,7 @@ import kgu.doaps.domain.item.Item;
 import kgu.doaps.domain.item.Pepper;
 import kgu.doaps.service.ItemService;
 import kgu.doaps.service.OrderService;
+import kgu.doaps.session.Login;
 import kgu.doaps.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,7 @@ public class ItemController {
             return "error/errorMessage";
         }
         model.addAttribute("form", new PepperForm());
+        model.addAttribute("member", loginMember);
         return "items/createItemForm";
     }
 
@@ -148,16 +150,23 @@ public class ItemController {
     }
 
     @GetMapping(value = "/items/{id}/detail")
-    public String itemDetail(@PathVariable("id") Long itemId, Model model){
+    public String itemDetail(@Login Member loginMember, @PathVariable("id") Long itemId, Model model){
         Pepper item = (Pepper) itemService.findOne(itemId);
         model.addAttribute("item", item);
+        model.addAttribute("member",loginMember);
+
+        if (loginMember == null) model.addAttribute("member", new Member());
+        else model.addAttribute("member", loginMember);
+
         return "items/itemDetail";
     }
 
     @GetMapping("/items/readall")
-    public String itemAll(Model model){
+    public String itemAll(@Login Member loginMember, Model model){
         List<Item> items = itemService.findItems();
         model.addAttribute("items", items);
+        if (loginMember == null) model.addAttribute("member", new Member());
+        else model.addAttribute("member", loginMember);
         return "items/itemAll";
     }
 }
