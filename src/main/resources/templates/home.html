@@ -90,7 +90,7 @@
             <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center" th:each="item : ${items}">
                 <div class="single-product-item">
                     <div class="product-image">
-                        <a href="#"><img th:src="@{${item.getImgUrl()}}"></a>
+                        <a href=""><img th:src="@{${item.getImgUrl()}}"></a>
                     </div>
                     <h3 th:text="${item.name}"></h3>
                     <span>Per Kg</span>
