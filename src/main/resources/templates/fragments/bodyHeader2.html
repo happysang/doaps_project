@@ -34,13 +34,13 @@
           <nav class="main-menu">
 
             <ul>
+              <li th:if="${member.loginId}"> <strong th:text="|${member.loginId}님🌶|" style="color: white"></strong></li>
               <li><a href="/">홈</a></li>
-              <li> <span th:text="${member.loginId}"></span></li>
               <li th:if="${member.loginId}"><form id="frm" th:action="@{/logout}" method="post"><a href="#" onclick="document.getElementById('frm').submit();">로그아웃</a></form></li>
 
               <li th:unless="${member.loginId}"><a href="/login">로그인</a></li>
               <li th:unless="${member.loginId}"><a href="/members/new">회원 가입</a></li>
-
+              <li><a href="/items/readall">전체 상품</a></li>
               <li th:if="${member.loginId}"><a href="#">마이페이지</a>
                 <ul class="sub-menu">
                   <li><a th:href="@{/mypage/{id}/edit (id=${member.id})}">내 정보 수정</a></li>
