@@ -153,4 +153,11 @@ public class ItemController {
         model.addAttribute("item", item);
         return "items/itemDetail";
     }
+
+    @GetMapping("/items/readall")
+    public String itemAll(Model model){
+        List<Item> items = itemService.findItems();
+        model.addAttribute("items", items);
+        return "items/itemAll";
+    }
 }
