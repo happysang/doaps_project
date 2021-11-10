@@ -28,8 +28,12 @@ public class ItemController {
     private final OrderService orderService;
 
     @GetMapping("/items/new")
-    public String createForm(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
-        if (loginMember == null) return "home";
+    public String createForm(@Login Member loginMember, Model model) {
+        if (loginMember == null) {
+            model.addAttribute("message", "로그인 후 이용하세요.");
+            model.addAttribute("redirectLink", "/login");
+            return "error/errorMessage";
+        }
 
         if (loginMember.getMemberStatus() == MemberStatus.BUYER) {
             model.addAttribute("message", "판매자 등록을 해야 합니다.");
@@ -82,7 +86,14 @@ public class ItemController {
     }
 
     @GetMapping("/items/{itemId}/edit")
-    public String updateItemForm(@PathVariable("itemId") Long itemId, Model model) {
+    public String updateItemForm(@Login Member loginMember, @PathVariable("itemId") Long itemId, Model model) {
+        if (loginMember == null) {
+            model.addAttribute("message", "로그인 후 이용하세요.");
+            model.addAttribute("redirectLink", "/login");
+            return "error/errorMessage";
+        }
+        model.addAttribute("member", loginMember);
+
         Pepper item = (Pepper) itemService.findOne(itemId);
 
         PepperForm form = new PepperForm();
@@ -128,7 +139,14 @@ public class ItemController {
     통계
      */
     @GetMapping("/items/{itemId}/stats")
-    public String itemStats(@PathVariable("itemId") Long itemId, Model model) {
+    public String itemStats(@Login Member loginMember, @PathVariable("itemId") Long itemId, Model model) {
+        if (loginMember == null) {
+            model.addAttribute("message", "로그인 후 이용하세요.");
+            model.addAttribute("redirectLink", "/login");
+            return "error/errorMessage";
+        }
+        model.addAttribute("member", loginMember);
+
         // 1. 아이템 정보 가져오기
         Pepper item = (Pepper) itemService.findOne(itemId);
         // 2. 아이템을 산 Order 에서 Order 정보 싹 가져온 후 CANCEL된애들 빼주기

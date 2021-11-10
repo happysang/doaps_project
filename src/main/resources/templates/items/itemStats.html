@@ -1,36 +1,50 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: header" />
+<head th:replace="fragments/header :: header"/>
 <body>
-<div class="container">
-    <div th:replace="fragments/bodyHeader :: bodyHeader" />
-    <div>
-        <div> 총 통계
-            <h4 th:text="|총 판매량 ${totalSales}|"></h4>
-            <h4 th:text="|총 판매수익 ${totalMoney}|"></h4>
-        </div>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>도시</th>
-                <th>성별</th>
-                <th>구매가격</th>
-                <th>구매일자</th>
-                <th>연령(아직 도메인에는 없음)</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="order : ${orders}">
-                <td th:text="${order.member.address?.city}"></td>
-                <td th:text="${order.member.genderStatus}"></td>
-                <td th:text="${order.getTotalPrice()}"></td>
-                <td th:text="${order.orderDate}"></td>
-                <td>500살</td>
-            </tr>
-            </tbody>
-        </table>
+    <script>var tt = "판매 통계"</script>
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+    <div class="col-lg-8 offset-lg-2 text-center">
+        <h3></h3>
+        <h3><span class="orange-text" th:text="|총 판매량   ${totalSales} kg|"></span></h3>
+        <h3><span class="orange-text" th:text="|총 판매수익   ${totalMoney} 원|"></span></h3>
     </div>
-    <div th:replace="fragments/footer :: footer" />
-</div> <!-- /container -->
+    <!-- cart -->
+    <div class="cart-section mt-150 mb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="cart-table-wrap">
+                        <table class="cart-table">
+                            <thead class="cart-table-head">
+                            <tr class="table-head-row">
+                                <th>도시</th>
+                                <th>성별</th>
+                                <th>구매가격</th>
+                                <th>구매일자</th>
+                                <th>연령(아직 도메인에는 없음)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-body-row" th:each="order : ${orders}">
+                                <td th:text="${order.member.address?.city}"></td>
+                                <td th:text="${order.member.genderStatus}"></td>
+                                <td th:text="${order.getTotalPrice()}"></td>
+                                <td th:text="${#temporals.format(order.orderDate, 'yyyy-MM-dd HH:mm')}"></td>
+                                <td>500살</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end cart -->
+
+    <!--<div th:replace="fragments/footer :: footer"/>-->
 </body>
+
 </html>

@@ -28,21 +28,14 @@ public class MypageController {
     private final ItemService itemService;
 
     @GetMapping("/mypage")
-    public String mypageHome(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model,
+    public String mypageHome(@Login Member loginMember, Model model,
                              HttpServletRequest request) {
         //login check
         if (loginMember == null) {
             model.addAttribute("member", new Member());
             return "home";
         }
-
-        Member member = memberService.findOne(loginMember.getId());
-        HttpSession session = request.getSession();
-        session.setAttribute(SessionConst.LOGIN_MEMBER, member);
-        // 왜 이렇게 해줬냐면 회원 정보 수정 후 세션에는 그대로 수정 전의 정보 세션이 들어있기 때문에 바뀐 DB의 세션객체를 업데이트해주기위해서.
-
-        model.addAttribute("member", member);
-
+        model.addAttribute("member",loginMember);
         return "mypage/mypage";
     }
 
@@ -50,10 +43,11 @@ public class MypageController {
     public String myOrder(@Login Member loginMember, Model model) {
         //login check
         if (loginMember == null) {
-            model.addAttribute("member", new Member());
-        } else {
-            model.addAttribute("member", loginMember);
+            model.addAttribute("message", "로그인 후 이용하세요.");
+            model.addAttribute("redirectLink", "/login");
+            return "error/errorMessage";
         }
+        model.addAttribute("member", loginMember);
 
         List<Order> orders = orderService.findMyOrder(loginMember.getId());
         model.addAttribute("orders", orders);
@@ -101,7 +95,7 @@ public class MypageController {
 
     ///////판매자만 쓰는 메뉴 ///////////
     @GetMapping("/mypage/myitem")
-    public String myItem(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
+    public String myItem(@Login Member loginMember, Model model) {
         if (loginMember == null) return "home";
 
         if (loginMember.getMemberStatus() == MemberStatus.BUYER) {
@@ -111,6 +105,7 @@ public class MypageController {
         }
         List<Item> items = itemService.findMyItem(loginMember.getId());
         model.addAttribute("items", items);
+        model.addAttribute("member", loginMember);
         return "mypage/myitem";
 
     }
