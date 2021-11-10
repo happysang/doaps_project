@@ -28,15 +28,20 @@ public class MypageController {
     private final ItemService itemService;
 
     @GetMapping("/mypage")
-    public String mypageHome(@Login Member loginMember, Model model,
+    public String mypageHome(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model,
                              HttpServletRequest request) {
         //login check
         if (loginMember == null) {
             model.addAttribute("member", new Member());
             return "home";
         }
-        model.addAttribute("member",loginMember);
-        return "mypage/mypage";
+        Member member = memberService.findOne(loginMember.getId());
+        HttpSession session = request.getSession();
+        session.setAttribute(SessionConst.LOGIN_MEMBER, member);
+        // 왜 이렇게 해줬냐면 회원 정보 수정 후 세션에는 그대로 수정 전의 정보 세션이 들어있기 때문에 바뀐 DB의 세션객체를 업데이트해주기위해서.
+
+        model.addAttribute("member", member);
+        return "redirect:/";
     }
 
     @GetMapping("/mypage/myorder")
@@ -90,7 +95,7 @@ public class MypageController {
             memberService.updateMemberStatus(loginMember.getId(), MemberStatus.BUYER);
             model.addAttribute("message", "일반 계정으로 계정 변경 합니다.");
         }
-        model.addAttribute("redirectLink", "/");
+        model.addAttribute("redirectLink", "/mypage");
         return  "error/errorMessage";
     }
 
