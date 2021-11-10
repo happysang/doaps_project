@@ -4,7 +4,7 @@
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <form th:object="${form}" method="post">
+    <form th:object="${form}" method="post" enctype="multipart/form-data">
         <!-- id -->
         <input type="hidden" th:field="*{id}" />
         <div class="form-group">

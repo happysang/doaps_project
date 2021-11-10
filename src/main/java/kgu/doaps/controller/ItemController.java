@@ -116,22 +116,35 @@ public class ItemController {
 
     @PostMapping(value = "/items/{itemId}/edit")
     public String updateItem(@ModelAttribute("form") PepperForm form,
-                             @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
-        Pepper pepper = new Pepper();
-        pepper.setId(form.getId());
-        pepper.setName(form.getName());
-        pepper.setPrice(form.getPrice());
-        pepper.setMember(loginMember);
-        pepper.setStockQuantity(form.getStockQuantity());
+                             @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
+                             HttpServletRequest request,
+                             @RequestParam("img") MultipartFile files) {
+        try {
+            String root_path = request.getSession().getServletContext().getRealPath("/");
+            String attach_path = "upload/";
+            String filename = files.getOriginalFilename();
+            File f = new File(root_path + attach_path + filename);
+            files.transferTo(f);
+            Pepper pepper = new Pepper();
+            pepper.setId(form.getId());
+            pepper.setName(form.getName());
+            pepper.setPrice(form.getPrice());
+            pepper.setMember(loginMember);
+            pepper.setStockQuantity(form.getStockQuantity());
+            pepper.setImgUrl(attach_path + filename);
+            pepper.setImportDate(form.getImportDate());
+            pepper.setProcessDate(form.getProcessDate());
+            pepper.setOrigin(form.getOrigin());
+            pepper.setVariety(form.getVariety());
+            pepper.setColor(form.getColor());
+            pepper.setSpicy(form.getSpicy());
 
-        pepper.setImportDate(form.getImportDate());
-        pepper.setProcessDate(form.getProcessDate());
-        pepper.setOrigin(form.getOrigin());
-        pepper.setVariety(form.getVariety());
-        pepper.setColor(form.getColor());
-        pepper.setSpicy(form.getSpicy());
+            itemService.saveItem(pepper);
+            return "redirect:/";
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
 
-        itemService.saveItem(pepper);
         return "redirect:/";
     }
 

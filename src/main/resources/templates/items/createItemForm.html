@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header" />
 <body>
+<script> var tt = "상품 등록"; </script>
 <div th:replace="fragments/bodyHeader :: bodyHeader"/>
 <div class="container">
     <form th:action="@{/items/new}" th:object="${form}" method="post" enctype="multipart/form-data">
