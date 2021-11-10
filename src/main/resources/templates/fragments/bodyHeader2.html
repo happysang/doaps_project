@@ -34,8 +34,8 @@
           <nav class="main-menu">
 
             <ul>
+              <li th:if="${member.loginId}"> <strong th:text="|${member.loginId}님🌶|" style="color: white"></strong></li>
               <li><a href="/">홈</a></li>
-              <li> <span th:text="${member.loginId}"></span></li>
               <li th:if="${member.loginId}"><form id="frm" th:action="@{/logout}" method="post"><a href="#" onclick="document.getElementById('frm').submit();">로그아웃</a></form></li>
 
               <li th:unless="${member.loginId}"><a href="/login">로그인</a></li>
