@@ -70,3 +70,6 @@ OrderRepo, Service / Item.java - 판매량관련로직 / itemStats.html
 
 #### 11.02 석근 
 상품 Field 6종류 추가(수입 일자, 가공일, 원산지, 품종, 색깔, 맵기정도(스코빌지수))
+
+
+*** 오류나 개선해야할 부분 ***
