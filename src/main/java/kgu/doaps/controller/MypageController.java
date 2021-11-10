@@ -82,7 +82,7 @@ public class MypageController {
 
         memberService.updateMember(memberId, form.getName(), address);
         //★성별,폰번호 등등 추가해줄것.
-        return "redirect:/";
+        return "redirect:/mypage";
     }
 
     @GetMapping("/mypage/changeMemberStatus")
