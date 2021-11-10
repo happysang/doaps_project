@@ -43,17 +43,30 @@ public class TestDataInit {
         member2.setAddress(new Address("서울시", "강남구", "대치동"));
         memberService.join(member2);
 
-        Pepper pepper = new Pepper();
-        pepper.setName("상품1");
-        pepper.setPrice(10000);
-        pepper.setMember(member1);
-        pepper.setStockQuantity(1000);
-        pepper.setSpicy(1000);
-        pepper.setVariety("청양");
-        pepper.setImportDate(YearMonth.of(2021,2));
-        pepper.setProcessDate(YearMonth.of(2021,3));
-        pepper.setColor("#bf1d1d");
-        itemService.saveItem(pepper);
+        Pepper pepper1 = new Pepper();
+        pepper1.setName("상품1");
+        pepper1.setPrice(10000);
+        pepper1.setMember(member1);
+        pepper1.setStockQuantity(1000);
+        pepper1.setSpicy(1000);
+        pepper1.setVariety("청양");
+        pepper1.setImportDate(YearMonth.of(2021,2));
+        pepper1.setProcessDate(YearMonth.of(2021,3));
+        pepper1.setColor("#bf1d1d");
+        itemService.saveItem(pepper1);
+
+        Pepper pepper2 = new Pepper();
+        pepper2.setName("상품2");
+        pepper2.setPrice(1000);
+        pepper2.setMember(member2);
+        pepper2.setStockQuantity(1000);
+        pepper2.setSpicy(1000);
+        pepper2.setImgUrl("upload/IMG_9080.JPG");
+        pepper2.setVariety("청양");
+        pepper2.setImportDate(YearMonth.of(2021,2));
+        pepper2.setProcessDate(YearMonth.of(2021,3));
+        pepper2.setColor("#bf1d1d");
+        itemService.saveItem(pepper2);
 
     }
 }
