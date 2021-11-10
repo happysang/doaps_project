@@ -71,7 +71,7 @@ public class ItemController {
             e.printStackTrace();
         }
 
-        return "redirect:/mypage";
+        return "redirect:/";
     }
 
     @GetMapping("/items")
@@ -121,7 +121,7 @@ public class ItemController {
         pepper.setSpicy(form.getSpicy());
 
         itemService.saveItem(pepper);
-        return "redirect:/mypage";
+        return "redirect:/";
     }
 
     /*
