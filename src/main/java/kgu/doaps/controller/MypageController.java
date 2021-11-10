@@ -66,7 +66,7 @@ public class MypageController {
         form.setCity(member.getAddress().getCity());
         form.setStreet(member.getAddress().getStreet());
         form.setZipcode(member.getAddress().getZipcode());
-        //★성별,폰번호 등등 추가해줄것.
+        form.setPhone(member.getPhone());
         model.addAttribute("form", form);
         return "mypage/updateMemberForm";
     }
