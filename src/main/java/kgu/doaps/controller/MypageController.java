@@ -85,11 +85,12 @@ public class MypageController {
         if (loginMember.getMemberStatus().equals(MemberStatus.BUYER)) {
             memberService.updateMemberStatus(loginMember.getId(), MemberStatus.SELLER);
             model.addAttribute("message", "판매 계정으로 계정 변경 합니다.");
-        } else {
+        }
+        if (loginMember.getMemberStatus().equals(MemberStatus.SELLER)){
             memberService.updateMemberStatus(loginMember.getId(), MemberStatus.BUYER);
             model.addAttribute("message", "일반 계정으로 계정 변경 합니다.");
         }
-        model.addAttribute("redirectLink", "/mypage");
+        model.addAttribute("redirectLink", "/");
         return  "error/errorMessage";
     }
 
