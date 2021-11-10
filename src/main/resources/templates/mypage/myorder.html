@@ -2,42 +2,51 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header"/>
 <body>
-<div class="container">
+    <script>var tt = "내 주문 목록"</script>
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <div>
+    <!-- cart -->
+    <div class="cart-section mt-150 mb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="cart-table-wrap">
+                        <table class="cart-table">
+                            <thead class="cart-table-head">
+                            <tr class="table-head-row">
+                                <th class="product-image">상품 이미지</th>
+                                <th >주문 상품명</th>
+                                <th >가격</th>
+                                <th >주문 수량</th>
+                                <th >상태</th>
+                                <th >주문 일시</th>
+                                <th class="product-quantity">취소</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-body-row" th:each="item : ${orders}">
+                                <td class="product-image"><img th:src="|../@{${item.orderItems[0].item.getImgUrl()}}|"></td>
+                                <td th:text="${item.orderItems[0].item.name}"></td>
+                                <td th:text="${item.orderItems[0].orderPrice}"></td>
+                                <td th:text="${item.orderItems[0].count}"></td>
+                                <td th:text="${item.status}"></td>
+                                <td th:text="${#temporals.format(item.orderDate, 'yyyy-MM-dd HH:mm')}"></td>
+                                <td>
+                                    <a th:if="${item.status.name() == 'ORDER'}" href="#"
+                                       th:href="'javascript:cancel('+${item.id}+')'"
+                                       class="btn btn-danger">주문 취소 신청</a>
+                                </td>
+                            </tr>
 
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>대표상품 이름</th>
-                <th>대표상품 주문가격</th>
-                <th>대표상품 주문수량</th>
-                <th>상태</th>
-                <th>일시</th>
-
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="item : ${orders}">
-                <td th:text="${item.id}"></td>
-                <td th:text="${item.orderItems[0].item.name}"></td>
-                <td th:text="${item.orderItems[0].orderPrice}"></td>
-                <td th:text="${item.orderItems[0].count}"></td>
-                <td th:text="${item.status}"></td>
-                <td th:text="${item.orderDate}"></td>
-                <td>
-                    <a th:if="${item.status.name() == 'ORDER'}" href="#"
-                       th:href="'javascript:cancel('+${item.id}+')'"
-                       class="btn btn-danger">CANCEL</a>
-                </td>
-
-            </tr>
-            </tbody>
-        </table>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div th:replace="fragments/footer :: footer"/>
-</div>
+    <!-- end cart -->
+
+<!--<div th:replace="fragments/footer :: footer"/>-->
 </body>
 <script>
     function cancel(id) {

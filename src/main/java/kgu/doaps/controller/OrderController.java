@@ -1,6 +1,7 @@
 package kgu.doaps.controller;
 
 import kgu.doaps.domain.Member;
+import kgu.doaps.domain.MemberStatus;
 import kgu.doaps.domain.Order;
 import kgu.doaps.domain.item.Item;
 import kgu.doaps.domain.item.Pepper;
@@ -8,6 +9,7 @@ import kgu.doaps.repository.OrderSearch;
 import kgu.doaps.service.ItemService;
 import kgu.doaps.service.MemberService;
 import kgu.doaps.service.OrderService;
+import kgu.doaps.session.Login;
 import kgu.doaps.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -24,16 +26,19 @@ public class OrderController {
     private final ItemService itemService;
 
     @GetMapping("/order/{orderId}")
-    public String createForm(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
+    public String createForm(@Login Member loginMember,
                              @PathVariable("orderId") Long orderId, Model model){
-//        List<Member> members = memberService.findMembers();
-//        List<Item> items = itemService.findItems();
-//        model.addAttribute("members", members);
-//        model.addAttribute("items", items);
+
+        if (loginMember == null) {
+            model.addAttribute("message", "로그인 후 이용하세요.");
+            model.addAttribute("redirectLink", "/login");
+            return "error/errorMessage";
+        }
 
         Pepper item = (Pepper) itemService.findOne(orderId);
         model.addAttribute("item", item);
-        model.addAttribute("loginmember", loginMember);
+        model.addAttribute("member", loginMember);
+
         return "order/orderForm";
     }
 
@@ -42,7 +47,7 @@ public class OrderController {
                         @RequestParam("itemId") Long itemId, //여기서는 파라미터만 넘겨줘서 영속 개체인 상태에서 처리를 할 수 있게 한다.
                         @RequestParam("count") int count){
         orderService.order(memberId, itemId, count);
-        return "redirect:/orders";
+        return "redirect:/";
     }
 
     @GetMapping("/orders")
