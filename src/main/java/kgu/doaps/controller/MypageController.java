@@ -8,6 +8,7 @@ import kgu.doaps.domain.item.Item;
 import kgu.doaps.service.ItemService;
 import kgu.doaps.service.MemberService;
 import kgu.doaps.service.OrderService;
+import kgu.doaps.session.Login;
 import kgu.doaps.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,7 @@ public class MypageController {
                              HttpServletRequest request) {
         //login check
         if (loginMember == null) {
+            model.addAttribute("member", new Member());
             return "home";
         }
 
@@ -45,11 +47,14 @@ public class MypageController {
     }
 
     @GetMapping("/mypage/myorder")
-    public String myOrder(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
+    public String myOrder(@Login Member loginMember, Model model) {
         //login check
         if (loginMember == null) {
-            return "home";
+            model.addAttribute("member", new Member());
+        } else {
+            model.addAttribute("member", loginMember);
         }
+
         List<Order> orders = orderService.findMyOrder(loginMember.getId());
         model.addAttribute("orders", orders);
         return "mypage/myorder";
