@@ -1,0 +1,93 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<div class="header" th:fragment="bodyHeader">-->
+<!--    <ul class="nav nav-pills pull-right">-->
+<!--        <li><a href="/">Home</a></li>-->
+<!--    </ul>-->
+<!--    <a href="/"><h3 class="text-muted">DOAPS</h3></a>-->
+<!--</div>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--PreLoader-->
+<div class="loader" th:fragment="bodyHeader2">
+  <div class="loader-inner">
+    <div class="circle"></div>
+  </div>
+</div>
+<!--PreLoader Ends-->
+
+<!-- header -->
+<div class="top-header-area" id="sticker" th:fragment="bodyHeader2">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 text-center">
+        <div class="main-menu-wrap">
+          <!-- logo -->
+          <div class="site-logo">
+            <a href="/">
+              <img th:src="@{/assets/img/logo.png}" alt="">
+            </a>
+          </div>
+          <!-- logo -->
+          <!-- menu start -->
+          <nav class="main-menu">
+
+            <ul>
+              <li><a href="/">홈</a></li>
+              <li> <span th:text="${member.loginId}"></span></li>
+              <li th:if="${member.loginId}"><form id="frm" th:action="@{/logout}" method="post"><a href="#" onclick="document.getElementById('frm').submit();">로그아웃</a></form></li>
+
+              <li th:unless="${member.loginId}"><a href="/login">로그인</a></li>
+              <li th:unless="${member.loginId}"><a href="/members/new">회원 가입</a></li>
+
+              <li th:if="${member.loginId}"><a href="#">마이페이지</a>
+                <ul class="sub-menu">
+                  <li><a th:href="@{/mypage/{id}/edit (id=${member.id})}">내 정보 수정</a></li>
+                  <li><a href="/mypage/myorder">내 주문 내역</a></li>
+                  <li><a href="/mypage/changeMemberStatus">계정 전환</a></li>
+                </ul>
+              </li>
+
+              <li><a href="#">판매자 페이지</a>
+                <ul class="sub-menu">
+                  <li><a href="/items/new">상품 등록</a></li>
+                </ul>
+              </li>
+
+              <li>
+                <div class="header-icons">
+                  <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                  <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+          <div class="mobile-menu"></div>
+          <!-- menu end -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end header -->
+
+<!-- search area -->
+<div class="search-area" th:fragment="bodyHeader2">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <span class="close-btn"><i class="fas fa-window-close"></i></span>
+        <div class="search-bar">
+          <div class="search-bar-tablecell">
+            <h3>Search For:</h3>
+            <input type="text" placeholder="Keywords">
+            <button type="submit">Search <i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end search area -->
