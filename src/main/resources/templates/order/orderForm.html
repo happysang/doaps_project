@@ -2,26 +2,93 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header" />
 <body>
-<div class="container">
-    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <form role="form" action="/order" method="post">
-        <div class="form-group">
-            <label for="member">주문회원</label>
-            <input type="text" name="memberId" class="form-control" id="member" th:value="${member.id}" readonly>
+<script>var tt = "주문서"</script>
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<!-- cart -->
+<form role="form" action="/order" method="post">
+<div class="latest-news mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="container text-center"><h3>주문서</h3></div>
+                <div class="cart-table-wrap">
+                    <table class="cart-table">
+                        <thead class="cart-table-head">
+                        <tr class="table-head-row">
+                            <th >주문 상품명</th>
+                            <th >kg당 가격</th>
+                            <th >주문 수량</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="table-body-row">
+                            <td th:text="${item.name}"></td>
+                            <td id = "price" th:text="${item.price}"></td>
+                            <td class="product-quantity"><input type="number" name="count" id="count" placeholder="0" onchange="update()"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <input type="hidden" name="memberId" id="member" th:value="${member.id}">
+                <input type="hidden" name="itemId" id="item" th:value="${item.id}">
+                <div class="container text-center"><input type="submit" value="주문"></div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="item">상품명</label>
-            <input type="text" name="itemId" class="form-control" id="item" th:value="${item.id}" readonly>
+    </div>
+    <div class="container"><h3>&nbsp;</h3></div>
+</form>
+<!-- end cart -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="cart-table-wrap">
+                    <table class="cart-table">
+                        <thead class="cart-table-head">
+                            <tr class="table-head-row">
+                                <th>Title</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-head-row">
+                                <td><strong>구매자 성함</strong></td>
+                                <td th:text="${member.name}"></td>
+                            </tr>
+                            <tr class="table-head-row">
+                                <td><strong>배송지</strong></td>
+                                <td th:text="${member.address.city} +' ' + ${member.address.street} +' ' + ${member.address.zipcode}"></td>
+                            </tr>
+                            <tr class="table-head-row">
+                                <td><strong>가격</strong></td>
+                                <td id="totalPrice"></td>
+                            </tr>
+                            <tr class="table-head-row">
+                                <td><strong></strong></td>
+                                <td></td>
+                            </tr>
+                            <tr class="table-head-row">
+                                <td><strong></strong></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="count">주문수량</label>
-            <input type="number" name="count" class="form-control" id="count"
-                   placeholder="주문 수량을 입력하세요">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    <br/>
-    <div th:replace="fragments/footer :: footer" />
-</div> <!-- /container -->
+    </div>
+</div>
 </body>
+<script th:inline="javascript">
+    function update() {
+        let n1 = document.getElementById("count").value;
+        /*<![CDATA[*/
+        let p1 = /*[[${item.price}]]*/ 'default';
+        /*]]>*/
+
+        console.log(n1);
+        console.log(p1);
+        let totalPrice = parseInt(n1) * parseInt(p1);
+        document.getElementById("totalPrice").innerText = totalPrice;
+    }
+</script>
 </html>
