@@ -62,7 +62,6 @@ public class MypageController {
     @GetMapping("/mypage/{memberId}/edit")
     public String updateMemberForm(@PathVariable("memberId") Long memberId, Model model) {
         Member member = memberService.findOne(memberId);
-
         MemberUpdateForm form = new MemberUpdateForm();
 
         form.setId(member.getId());
@@ -77,10 +76,8 @@ public class MypageController {
 
     @PostMapping("/mypage/{memberId}/edit")
     public String updateMember(@PathVariable("memberId") Long memberId, @ModelAttribute("form") MemberUpdateForm form) {
-
         Address address = new Address(form.getCity(), form.getStreet(), form.getZipcode());
-
-        memberService.updateMember(memberId, form.getName(), address);
+        memberService.updateMember(memberId, form.getName(), address, form.getPhone());
         //★성별,폰번호 등등 추가해줄것.
         return "redirect:/mypage";
     }

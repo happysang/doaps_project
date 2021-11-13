@@ -39,10 +39,11 @@ public class MemberService {
     }
 
     @Transactional
-    public void updateMember(Long memberId, String name, Address address) {
+    public void updateMember(Long memberId, String name, Address address, String phone) {
         Member findMember = memberRepository.findById(memberId);
         findMember.setName(name);
         findMember.setAddress(address);
+        findMember.setPhone(phone);
         //★성별,폰번호 등등 추가해줄것.
     }
 
