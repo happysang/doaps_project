@@ -1,5 +1,71 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div class="footer" th:fragment="footer">
-    <p>&copy; DOAPS</p>
+
+<!-- footer -->
+<div class="footer-area" th:fragment="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box about-widget">
+                    <h2 class="widget-title">About us</h2>
+                    <p>수입산 고추를 수입하여 판매하는 판매자들이 편리하게 판매를 할 수 있는 플랫폼 제공</p>
+                    <p>판매자들이 판매하는 고추에 대한 자세한 정보를 제공함으로써 제품에 대한 신뢰도 제공</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box get-in-touch">
+                    <h2 class="widget-title">Get in Touch</h2>
+                    <ul>
+                        <li>권혁상</li>
+                        <li>happysang@kyonggi.ac.kr</li>
+                        <li>이석근</li>
+                        <li>gkwoap@kyonggi.ac.kr</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box pages">
+                    <h2 class="widget-title">More about developers</h2>
+                    <ul>
+                        <li><a href="https://github.com/happysang">권혁상</a></li>
+                        <li><a href="https://github.com/leesg619">이석근</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box subscribe">
+                    <h2 class="widget-title">Service Center</h2>
+                    <p>홈페이지 건의사항을 보내주세요.</p>
+                    <form action="/">
+                        <input type="email" placeholder="Email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- end footer -->
+
+<!-- copyright -->
+<div class="copyright" th:fragment="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
+            </div>
+            <div class="col-lg-6 text-right col-md-12">
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end copyright -->
