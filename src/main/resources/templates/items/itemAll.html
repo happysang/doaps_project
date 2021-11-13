@@ -19,74 +19,6 @@
 </div>
 <!--PreLoader Ends-->
 
-<!-- header -->
-<div class="top-header-area" id="sticker">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-sm-12 text-center">
-                <div class="main-menu-wrap">
-                    <!-- logo -->
-                    <div class="site-logo">
-                        <a href="index.html">
-                            <img src="../assets/img/logo.png" alt="">
-                        </a>
-                    </div>
-                    <!-- logo -->
-
-                    <!-- menu start -->
-                    <nav class="main-menu">
-                        <ul>
-                            <li class="current-list-item"><a href="#">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.html">Static Home</a></li>
-                                    <li><a href="index_2.html">Slider Home</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="404.html">404 page</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Check Out</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="news.html">News</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="news.html">News</a>
-                                <ul class="sub-menu">
-                                    <li><a href="news.html">News</a></li>
-                                    <li><a href="single-news.html">Single News</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="shop.html">Shop</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="checkout.html">Check Out</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <div class="header-icons">
-                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
-                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                    <div class="mobile-menu"></div>
-                    <!-- menu end -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end header -->
-
 <!-- search area -->
 <div class="search-area">
     <div class="container">
@@ -111,15 +43,15 @@
         <div class="row">
             <div class="col-lg-4 col-md-6" th:each="item : ${items}">
                 <div class="single-latest-news">
-                    <a href=""><img th:src="|../@{${item.getImgUrl()}}|"></a>
+                    <a href="" th:href="@{/items/{id}/detail (id=${item.id}) }"><img th:src="|../@{${item.getImgUrl()}}|"></a>
                     <div class="news-text-box">
-                        <h3><a href="single-news.html">You will vainly look for fruit on it in autumn.</a></h3>
+                        <h3><a href="#" th:href="@{/items/{id}/detail (id=${item.id}) }"></a></h3>
                         <p class="blog-meta">
-                            <span class="author"><i class="fas fa-user"></i> Admin</span>
+                            <span class="author"><i th:text="${item.member.loginId}" class="fas fa-user"></i></span>
                             <span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
                         </p>
                         <p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus laborum autem, dolores inventore, beatae nam.</p>
-                        <a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+                        <a href="#" th:href="@{/items/{id}/detail (id=${item.id}) }" class="read-more-btn">상세 페이지 보기 <i class="fas fa-angle-right"></i></a>
                     </div>
                 </div>
             </div>
