@@ -31,24 +31,21 @@
             </div>
             <div class="col-md-7">
                 <div class="single-product-content">
-                    <h3 th:text="${item.name}"></h3>
-                    <span th:text="${item.variety}"></span>
-                    <p class="single-product-pricing" th:text="${item.price}">원</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta sint dignissimos, rem commodi cum voluptatem quae reprehenderit repudiandae ea tempora incidunt ipsa, quisquam animi perferendis eos eum modi! Tempora, earum.</p>
+                    <h2 th:text="${item.name}"></h2>
+                    <h3> <span th:text="${item.price}"></span>원</h3>
+<!--                    <p class="single-product-pricing"><span th:text="${item.price}"></span>원</p>-->
+                    <p>맛 있는 곳에서 맛있게 재배한 맛좋은 고추 입니다^^</p>
                     <div class="single-product-form">
-<!--                        <form action="index.html">-->
-<!--                            <input type="number" placeholder="0">-->
-<!--                        </form>-->
-                        <p><strong>Categories: </strong>Fruits, Organic</p>
-                        품종 : <p th:text="${item.variety}"></p>
-                        원산지 : <p th:text="${item.origin}"></p>
-                        가공일 : <p th:text="${item.processDate}"></p>
-                        수입일 : <p th:text="${item.importDate}"></p>
-                        판매자 : <p th:text="${item.member.loginId}"></p>
-                        재고 : <p th:text="${item.stockQuantity}"></p>
-                        맵기 정도 (SHU) : <p th:text="${item.spicy}"></p>
+                        <p style="font-size: medium"><strong>품종: </strong><span th:text="${item.variety}"></span></p>
+                        <p style="font-size: medium"><strong>원산지: </strong><span th:text="${item.origin}"></span></p>
+                        <p class="date" style="font-size: medium"><strong>가공일: </strong><span th:text="${item.processDate}"></span></p>
+                        <p class="date" style="font-size: medium"><strong>수입일: </strong><span th:text="${item.importDate}"></span></p>
+                        <p class="author" style="font-size: medium"><strong>판매자: </strong><span th:text="${item.member.loginId}"></span></p>
+                        <p style="font-size: medium"><strong>재고: </strong><span th:text="${item.stockQuantity}"></span>kg</p>
+                        <p style="font-size: medium"><strong>맵기 정도 (SHU) : </strong><span th:text="${item.spicy}"></span>kg</p>
                     </div>
                 </div>
+                <br>
                 <a th:href="@{/order/{itemId} (itemId=${item.id})}" class="cart-btn"><i class="fas fa-shopping-cart"></i>주문</a>
             </div>
         </div>

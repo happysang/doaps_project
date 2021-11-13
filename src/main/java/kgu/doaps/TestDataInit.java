@@ -61,6 +61,7 @@ public class TestDataInit {
         pepper2.setMember(member2);
         pepper2.setStockQuantity(1000);
         pepper2.setSpicy(1000);
+        pepper2.setOrigin("중국");
         pepper2.setImgUrl("upload/IMG_9080.JPG");
         pepper2.setVariety("청양");
         pepper2.setImportDate(YearMonth.of(2021,2));
