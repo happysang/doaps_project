@@ -61,7 +61,6 @@ public class ItemController {
             pepper.setMember(loginMember);
             pepper.setStockQuantity(form.getStockQuantity());
             pepper.setImgUrl(attach_path+filename);
-
             pepper.setImportDate(form.getImportDate());
             pepper.setProcessDate(form.getProcessDate());
             pepper.setOrigin(form.getOrigin());
@@ -95,14 +94,12 @@ public class ItemController {
         model.addAttribute("member", loginMember);
 
         Pepper item = (Pepper) itemService.findOne(itemId);
-
         PepperForm form = new PepperForm();
         form.setId(item.getId());
         form.setName(item.getName());
         form.setPrice(item.getPrice());
         form.setStockQuantity(item.getStockQuantity());
         form.setImgUrl(item.getImgUrl());
-
         form.setImportDate(item.getImportDate());
         form.setProcessDate(item.getProcessDate());
         form.setOrigin(item.getOrigin());
