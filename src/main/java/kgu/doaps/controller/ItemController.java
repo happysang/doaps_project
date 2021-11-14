@@ -48,15 +48,11 @@ public class ItemController {
     @PostMapping("/items/new")
     public String create(@RequestParam("img") MultipartFile files, PepperForm form, HttpServletRequest request,
                          @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
-        String origin="";
-        if (form.getOrigin().equals("기타")) {
-            origin = "기타-"+form.getEtc();
-        } else {
-            origin = form.getOrigin();
+
+        if (!form.getOrigin().equals("기타")) {
+            form.setOriginD(form.getOrigin());
         }
-        System.out.println("form.getOrigin() = " + form.getOrigin());
-        System.out.println("form.getEtc() = " + form.getEtc());
-        System.out.println("origin = " + origin);
+
         try {
             String root_path = request.getSession().getServletContext().getRealPath("/");
             String attach_path = "upload/";
@@ -72,7 +68,8 @@ public class ItemController {
             pepper.setImgUrl(attach_path+filename);
             pepper.setImportDate(form.getImportDate());
             pepper.setProcessDate(form.getProcessDate());
-            pepper.setOrigin(origin);
+            pepper.setOrigin(form.getOrigin());
+            pepper.setOriginD(form.getOriginD());
             pepper.setVariety(form.getVariety());
             pepper.setColor(form.getColor());
             pepper.setSpicy(form.getSpicy());

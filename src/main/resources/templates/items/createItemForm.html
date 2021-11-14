@@ -37,11 +37,11 @@
 
         <div class="form-group">
             <label th:for="origin">원산지</label><br>
-            국내산<input type="radio" th:field="*{origin}" class="form-control" value="국내산" onClick="this.form.etc.disabled=true" checked>
-            중국산<input type="radio" th:field="*{origin}" class="form-control" value="중국산" onClick="this.form.etc.disabled=true" checked>
-            미국산<input type="radio" th:field="*{origin}" class="form-control" value="미국산" onClick="this.form.etc.disabled=true" checked>
-            기타<input type="radio" th:field="*{origin}" class="form-control" value="기타" onClick="this.form.etc.disabled=false" checked>
-            기타사항 입력: <input type=text th:field="*{etc}" name=text1 disabled>
+            국내산<input type="radio" th:field="*{origin}" class="form-control" value="국내산" onClick="this.form.originD.disabled=true" checked>
+            중국산<input type="radio" th:field="*{origin}" class="form-control" value="중국산" onClick="this.form.originD.disabled=true" checked>
+            미국산<input type="radio" th:field="*{origin}" class="form-control" value="미국산" onClick="this.form.originD.disabled=true" checked>
+            기타<input type="radio" th:field="*{origin}" class="form-control" value="기타" onClick="this.form.originD.disabled=false" checked>
+            기타사항 입력: <input type=text th:field="*{originD}" name=text1 disabled>
         </div>
 
         <div class="form-group">
