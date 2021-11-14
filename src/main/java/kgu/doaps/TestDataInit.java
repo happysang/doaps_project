@@ -49,7 +49,9 @@ public class TestDataInit {
         pepper1.setMember(member1);
         pepper1.setStockQuantity(1000);
         pepper1.setSpicy(1000);
+        pepper1.setOrigin("국내산");
         pepper1.setVariety("청양");
+        pepper1.setImgUrl("upload/IMG_9081.JPG");
         pepper1.setImportDate(YearMonth.of(2021,2));
         pepper1.setProcessDate(YearMonth.of(2021,3));
         pepper1.setColor("#bf1d1d");
@@ -61,9 +63,9 @@ public class TestDataInit {
         pepper2.setMember(member2);
         pepper2.setStockQuantity(1000);
         pepper2.setSpicy(1000);
-        pepper2.setOrigin("중국");
-        pepper2.setImgUrl("upload/IMG_9080.JPG");
+        pepper2.setOrigin("중국산");
         pepper2.setVariety("청양");
+        pepper2.setImgUrl("upload/IMG_9080.JPG");
         pepper2.setImportDate(YearMonth.of(2021,2));
         pepper2.setProcessDate(YearMonth.of(2021,3));
         pepper2.setColor("#bf1d1d");
