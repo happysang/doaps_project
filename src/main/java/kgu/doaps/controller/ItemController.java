@@ -172,14 +172,20 @@ public class ItemController {
         //3. 종합통계는  따로 구해서 해주기
         int totalSales = item.getSales();
         int totalMoney=0;
+        int totalAge = 0;
         for (Order order : orders) {
             totalMoney+=order.getTotalPrice();
+            totalAge += Integer.parseInt(order.getMember().getAge());
         }
+        if (orders.size()==0) totalAge = 0;
+        else totalAge /= orders.size();
 
 
         model.addAttribute("orders", orders);
         model.addAttribute("totalSales", totalSales);
         model.addAttribute("totalMoney", totalMoney);
+        model.addAttribute("totalAge", totalAge);
+
         return "items/itemStats";
     }
 
