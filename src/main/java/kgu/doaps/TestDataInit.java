@@ -31,6 +31,7 @@ public class TestDataInit {
         member1.setGenderStatus(GenderStatus.MALE);
         member1.setMemberStatus(MemberStatus.SELLER);
         member1.setAddress(new Address("서울시", "송파구", "방이동"));
+        member1.setAge("25");
         memberService.join(member1);
 
         Member member2 = new Member();
@@ -41,6 +42,7 @@ public class TestDataInit {
         member2.setGenderStatus(GenderStatus.MALE);
         member2.setMemberStatus(MemberStatus.SELLER);
         member2.setAddress(new Address("서울시", "강남구", "대치동"));
+        member2.setAge("30");
         memberService.join(member2);
 
         Pepper pepper1 = new Pepper();

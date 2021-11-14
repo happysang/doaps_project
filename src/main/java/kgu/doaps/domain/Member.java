@@ -34,4 +34,7 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private MemberStatus memberStatus;
+
+    @NotEmpty
+    private String age;
 }

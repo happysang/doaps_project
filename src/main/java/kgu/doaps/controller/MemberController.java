@@ -42,6 +42,7 @@ public class MemberController {
         member.setPhone(form.getPhone());
         member.setGenderStatus(form.getGenderStatus());
         member.setMemberStatus(form.getMemberStatus());
+        member.setAge(form.getAge());
         memberService.join(member);
         return "redirect:/";
     }
