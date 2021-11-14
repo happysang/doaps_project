@@ -23,7 +23,7 @@
                                 <th>성별</th>
                                 <th>구매가격</th>
                                 <th>구매일자</th>
-                                <th>연령(아직 도메인에는 없음)</th>
+                                <th>연령</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -32,7 +32,7 @@
                                 <td th:text="${order.member.genderStatus}"></td>
                                 <td th:text="${order.getTotalPrice()}"></td>
                                 <td th:text="${#temporals.format(order.orderDate, 'yyyy-MM-dd HH:mm')}"></td>
-                                <td>500살</td>
+                                <td th:text="${order.member.age} + '세'"></td>
                             </tr>
 
                             </tbody>
