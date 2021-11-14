@@ -21,4 +21,6 @@ public class PepperForm {
     private String variety;
     private String color;
     private int spicy;  //스코빌 지수 (SHU)
+
+    private String etc;
 }

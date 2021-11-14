@@ -34,10 +34,10 @@ public class ItemRepository {
                 .setParameter("id", id)
                 .getResultList();
     }
-    /*
-    추가할 메서드
-     */
-    /*
-    public List<Item> findAll(ItemSearch itemSearch) { } // 물품 검색 기능 ( + ItemSearch class 생성필요)
-    */
+
+    public List<Item> findByOrigin(String origin) {
+        return em.createQuery("select i from Pepper i where i.origin =:origin", Item.class)
+                .setParameter("origin", origin)
+                .getResultList();
+    }
 }

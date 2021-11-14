@@ -48,6 +48,15 @@ public class ItemController {
     @PostMapping("/items/new")
     public String create(@RequestParam("img") MultipartFile files, PepperForm form, HttpServletRequest request,
                          @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
+        String origin="";
+        if (form.getOrigin().equals("기타")) {
+            origin = "기타-"+form.getEtc();
+        } else {
+            origin = form.getOrigin();
+        }
+        System.out.println("form.getOrigin() = " + form.getOrigin());
+        System.out.println("form.getEtc() = " + form.getEtc());
+        System.out.println("origin = " + origin);
         try {
             String root_path = request.getSession().getServletContext().getRealPath("/");
             String attach_path = "upload/";
@@ -63,7 +72,7 @@ public class ItemController {
             pepper.setImgUrl(attach_path+filename);
             pepper.setImportDate(form.getImportDate());
             pepper.setProcessDate(form.getProcessDate());
-            pepper.setOrigin(form.getOrigin());
+            pepper.setOrigin(origin);
             pepper.setVariety(form.getVariety());
             pepper.setColor(form.getColor());
             pepper.setSpicy(form.getSpicy());
@@ -191,8 +200,18 @@ public class ItemController {
 
     @GetMapping("/items/readall")
     public String itemAll(@Login Member loginMember, Model model){
-        List<Item> items = itemService.findItems();
-        model.addAttribute("items", items);
+//        List<Item> items = itemService.findItems();
+//        model.addAttribute("items", items);
+        List<Item> first = itemService.findByOrigin("국내산");
+        model.addAttribute("korea", first);
+        List<Item> second = itemService.findByOrigin("중국산");
+        model.addAttribute("china", second);
+        List<Item> third = itemService.findByOrigin("미국산");
+        model.addAttribute("usa", third);
+
+        List<Item> etc = itemService.findByOrigin("기타");
+        model.addAttribute("etc", etc);
+
         if (loginMember == null) model.addAttribute("member", new Member());
         else model.addAttribute("member", loginMember);
         return "items/itemAll";

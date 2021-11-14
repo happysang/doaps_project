@@ -23,4 +23,8 @@ public class ItemService {
     public Item findOne(Long itemId) { return itemRepository.findOne(itemId); }
 
     public List<Item> findMyItem(Long itemId) { return itemRepository.findMyItem(itemId); }
+
+    public List<Item> findByOrigin(String origin) { return itemRepository.findByOrigin(origin); }
+
+
 }
