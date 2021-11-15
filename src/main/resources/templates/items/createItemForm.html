@@ -4,66 +4,61 @@
 <body>
 <script> var tt = "상품 등록"; </script>
 <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-<div class="container">
-    <form th:action="@{/items/new}" th:object="${form}" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label th:for="name" sty>상품명</label>
-            <input type="text" th:field="*{name}" class="form-control"
-                   placeholder="이름을 입력하세요">
-        </div>
-        <div class="form-group">
-            <label th:for="price">가격</label>
-            <input type="number" th:field="*{price}" class="form-control"
-                   placeholder="가격을 입력하세요">
-        </div>
-        <div class="form-group">
-            <label th:for="stockQuantity">수량</label>
-            <input type="number" th:field="*{stockQuantity}" class="form-control" placeholder="수량을 입력하세요">
-        </div>
-        <div class="form-group">
-            <label th:for="img">사진</label>
-            <input type="file" name="img" class="form-control" />
-        </div>
 
-        <div class="form-group">
-            <label th:for="importDate">수입일자</label>
-            <input type="month" th:field="*{importDate}" class="form-control">
-        </div>
+<!-- check out section -->
+<div class="checkout-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="checkout-accordion-wrap">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        상품 등록
+                                    </button>
+                                </h5>
+                            </div>
 
-        <div class="form-group">
-            <label th:for="processDate">가공일</label>
-            <input type="month" th:field="*{processDate}" class="form-control">
-        </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="billing-address-form">
+                                        <form th:action="@{/items/new}" th:object="${form}" method="post" enctype="multipart/form-data">
+                                            <p>상품명 <input type="text" th:field="*{name}" class="form-control" placeholder="상품명을 입력하세요" ></p>
+                                            <p>가격 <input type="number" th:field="*{price}" class="form-control" placeholder="가격을 입력하세요"></p>
+                                            <p>수량 <input type="number" th:field="*{stockQuantity}" class="form-control" placeholder="수량을 입력하세요"></p>
 
-        <div class="form-group">
-            <label th:for="origin">원산지</label><br>
-            국내산<input type="radio" th:field="*{origin}" class="form-control" value="국내산" onClick="this.form.originD.disabled=true" checked>
-            중국산<input type="radio" th:field="*{origin}" class="form-control" value="중국산" onClick="this.form.originD.disabled=true" checked>
-            미국산<input type="radio" th:field="*{origin}" class="form-control" value="미국산" onClick="this.form.originD.disabled=true" checked>
-            기타<input type="radio" th:field="*{origin}" class="form-control" value="기타" onClick="this.form.originD.disabled=false" checked>
-            기타사항 입력: <input type=text th:field="*{originD}" name=text1 disabled>
-        </div>
+                                            <p>사진 <input type="file" name="img" class="form-control"></p>
 
-        <div class="form-group">
-            <label th:for="variety">품종</label>
-            <input type="text" th:field="*{variety}" class="form-control"
-                   placeholder="품종을 입력하세요">
-        </div>
+                                            <p>수입일자 <input type="month" th:field="*{importDate}" class="form-control" ></p>
+                                            <p>가공일자 <input type="month" th:field="*{processDate}" class="form-control" ></p>
+                                            <p>원산지</p>
+                                            국내산<input type="radio" th:field="*{origin}" class="form-control" value="국내산" onClick="this.form.originD.disabled=true" checked>
+                                            중국산<input type="radio" th:field="*{origin}" class="form-control" value="중국산" onClick="this.form.originD.disabled=true" checked>
+                                            미국산<input type="radio" th:field="*{origin}" class="form-control" value="미국산" onClick="this.form.originD.disabled=true" checked>
+                                            기타<input type="radio" th:field="*{origin}" class="form-control" value="기타" onClick="this.form.originD.disabled=false" checked>
+                                            기타사항 입력: <input type=text th:field="*{originD}" name=text1 disabled>
+                                            <p>품종 <input type="text" th:field="*{variety}" class="form-control" placeholder="품종을 입력하세요"></p>
+                                            <p>색깔 <input type="color" th:field="*{color}" class="form-control" ></p>
+                                            <p>맵기정도 (단위 : 스코빌 지수) <input type="number" th:field="*{spicy}" class="form-control" placeholder="맵기 정도를 입력하세요"></p>
 
-        <div class="form-group">
-            <label th:for="color">색깔</label>
-            <input type="color" th:field="*{color}" class="form-control">
-        </div>
 
-        <div class="form-group">
-            <label th:for="stockQuantity">맵기정도 (단위 : 스코빌 지수)</label>
-            <input type="number" th:field="*{spicy}" class="form-control" placeholder="맵기 정도를 입력 하시오">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <!--                                            <a href="#" onclick="document.getElementById('frm').submit();" class="boxed-btn">수정 완료</a>-->
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    <br/>
-</div> <!-- /container -->
+    </div>
+    <!-- end check out section -->
+</div>
 <div th:replace="fragments/footer :: footer" />
+
 </body>
 </html>
