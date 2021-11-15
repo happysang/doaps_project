@@ -6,6 +6,7 @@ import kgu.doaps.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,7 +29,7 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@Valid @ModelAttribute LoginForm form, BindingResult bindingResult, HttpServletRequest request) {
+    public String login(@Valid @ModelAttribute LoginForm form, BindingResult bindingResult, HttpServletRequest request, Model model) {
         if (bindingResult.hasErrors()) {
             return "members/loginForm";
         }
@@ -36,8 +37,9 @@ public class LoginController {
         log.info("Login? {}", loginMember);
 
         if (loginMember == null) {
-            bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
-            return "members/loginForm";
+            model.addAttribute("message", "아이디 또는 비밀번호가 맞지 않습니다.");
+            model.addAttribute("redirectLink", "/login");
+            return "error/errorMessage";
         }
 
         //로그인 성공 처리

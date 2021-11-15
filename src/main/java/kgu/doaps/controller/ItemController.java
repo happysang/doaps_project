@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -180,11 +181,24 @@ public class ItemController {
         if (orders.size()==0) totalAge = 0;
         else totalAge /= orders.size();
 
+        HashMap<String, Integer> map = new HashMap<>();
+        String mostCity = "";
+        for (Order order : orders) {
+            map.put(order.getMember().getAddress().getCity(), map.getOrDefault(order.getMember().getAddress().getCity() , 0) + 1);
+        }
+        int mostCityNum = 0;
+        for (String s : map.keySet()) {
+            if (map.get(s) > mostCityNum) {
+                mostCity = s;
+                mostCityNum = map.get(s);
+            }
+        }
 
         model.addAttribute("orders", orders);
         model.addAttribute("totalSales", totalSales);
         model.addAttribute("totalMoney", totalMoney);
         model.addAttribute("totalAge", totalAge);
+        model.addAttribute("mostCity", mostCity);
 
         return "items/itemStats";
     }
