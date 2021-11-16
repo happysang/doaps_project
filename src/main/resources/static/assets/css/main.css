@@ -2756,3 +2756,11 @@ table.order-details tbody td {
   vertical-align: middle;
   width: 100%;
 }
+
+.txt_line {
+  width:70px;
+  padding:0 5px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}

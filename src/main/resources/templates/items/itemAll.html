@@ -65,7 +65,7 @@
                             <span class="author"><i th:text="${item.member.loginId}" class="fas fa-user"></i></span>
                             수입날짜: <span class="date"><i th:text="${item.importDate}" class="fas fa-calendar"></i></span>
                         </p>
-                        <p class="excerpt">상품설명이 들어가면 좋을 듯, (아예없어도 되고)</p>
+                        <p class="excerpt txt_line" th:text="${item.explain}"></p>
                         <a href="#" th:href="@{/items/{id}/detail (id=${item.id}) }" class="read-more-btn">상세 페이지 보기 <i class="fas fa-angle-right"></i></a>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                             <span class="author"><i th:text="${item.member.loginId}" class="fas fa-user"></i></span>
                             수입날짜: <span class="date"><i th:text="${item.importDate}" class="fas fa-calendar"></i></span>
                         </p>
-                        <p class="excerpt">상품설명이 들어가면 좋을 듯, (아예없어도 되고)</p>
+                        <p class="excerpt txt_line" th:text="${item.explain}"></p>
                         <a href="#" th:href="@{/items/{id}/detail (id=${item.id}) }" class="read-more-btn">상세 페이지 보기 <i class="fas fa-angle-right"></i></a>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                             <span class="author"><i th:text="${item.member.loginId}" class="fas fa-user"></i></span>
                             수입날짜: <span class="date"><i th:text="${item.importDate}" class="fas fa-calendar"></i></span>
                         </p>
-                        <p class="excerpt">상품설명이 들어가면 좋을 듯, (아예없어도 되고)</p>
+                        <p class="excerpt txt_line" th:text="${item.explain}"></p>
                         <a href="#" th:href="@{/items/{id}/detail (id=${item.id}) }" class="read-more-btn">상세 페이지 보기 <i class="fas fa-angle-right"></i></a>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                             <span class="author"><i th:text="${item.member.loginId}" class="fas fa-user"></i></span>
                             수입날짜: <span class="date"><i th:text="${item.importDate}" class="fas fa-calendar"></i></span>
                         </p>
-                        <p class="excerpt">상품설명이 들어가면 좋을 듯, (아예없어도 되고)</p>
+                        <p class="txt_line" th:text="${item.explain}"></p>
                         <a href="#" th:href="@{/items/{id}/detail (id=${item.id}) }" class="read-more-btn">상세 페이지 보기 <i class="fas fa-angle-right"></i></a>
                     </div>
                 </div>
