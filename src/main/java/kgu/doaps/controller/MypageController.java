@@ -71,6 +71,8 @@ public class MypageController {
         form.setZipcode(member.getAddress().getZipcode());
         form.setPhone(member.getPhone());
         model.addAttribute("form", form);
+
+        model.addAttribute("member", member);
         return "mypage/updateMemberForm";
     }
 
