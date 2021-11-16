@@ -27,8 +27,10 @@
                                         <form th:action="@{/items/new}" th:object="${form}" method="post" enctype="multipart/form-data">
                                             <p>상품명 <input type="text" th:field="*{name}" class="form-control" placeholder="상품명을 입력하세요" ></p>
                                             <p>가격 <input type="number" th:field="*{price}" class="form-control" placeholder="가격을 입력하세요"></p>
-                                            <p>수량 <input type="number" th:field="*{stockQuantity}" class="form-control" placeholder="수량을 입력하세요"></p>
-                                            <p>제품 설명</p>
+                                            <p>수량 <input type="number" th:field="*{stockQuantity}" class="form-control" placeholder="수량을 입력하세요.-단위:kg"></p>
+                                            <p>품종 <input type="text" th:field="*{variety}" class="form-control" placeholder="품종을 입력하세요"></p>
+                                            <p>가공상태<input type="text" th:field="*{processing}" class="form-control" placeholder="ex)건조,냉동 등"></p>
+                                            <p>제품 설명</p><textarea th:field="*{explain}" class="billing-address-form" cols="80" rows="4" placeholder="제품 설명 부탁드려요."></textarea>
                                             <p>원산지</p>
                                             국내산<input type="radio" th:field="*{origin}" class="form-control" value="국내산" onClick="this.form.originD.disabled=true" checked>
                                             중국산<input type="radio" th:field="*{origin}" class="form-control" value="중국산" onClick="this.form.originD.disabled=true" checked>
@@ -37,13 +39,11 @@
                                             기타사항 입력: <input type=text th:field="*{originD}" name=text1 disabled>
                                             <p>수입일자 <input type="month" th:field="*{importDate}" class="form-control" ></p>
                                             <p>가공일자 <input type="month" th:field="*{processDate}" class="form-control" ></p>
-                                            <p>품종 <input type="text" th:field="*{variety}" class="form-control" placeholder="품종을 입력하세요"></p>
                                             <p>색깔 <input type="color" th:field="*{color}" class="form-control" ></p>
                                             <p>맵기정도 (단위 : 스코빌 지수) <input type="number" th:field="*{spicy}" class="form-control" placeholder="맵기 정도를 입력하세요"></p>
                                             <p>사진 <input type="file" name="img" class="form-control"></p>
 
                                             <button type="submit" class="btn btn-primary">Submit</button>
-                                            <!--                                            <a href="#" onclick="document.getElementById('frm').submit();" class="boxed-btn">수정 완료</a>-->
                                         </form>
                                     </div>
                                 </div>

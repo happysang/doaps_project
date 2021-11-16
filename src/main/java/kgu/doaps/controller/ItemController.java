@@ -74,7 +74,8 @@ public class ItemController {
             pepper.setVariety(form.getVariety());
             pepper.setColor(form.getColor());
             pepper.setSpicy(form.getSpicy());
-
+            pepper.setExplain(form.getExplain());
+            pepper.setProcessing(form.getProcessing());
             itemService.saveItem(pepper);
             return "redirect:/";
         } catch(Exception e) {

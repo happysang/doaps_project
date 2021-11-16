@@ -32,7 +32,7 @@ public abstract class Item {
 
     private String explain;
 
-    private String Processing;
+    private String processing;
 
     //==비즈니스 로직 ==//
     /*

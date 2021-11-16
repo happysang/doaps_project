@@ -32,17 +32,20 @@
             <div class="col-md-7">
                 <div class="single-product-content">
                     <h2 th:text="${item.name}"></h2>
-                    <h3> <span th:text="${item.price}"></span>원</h3>
-<!--                    <p class="single-product-pricing"><span th:text="${item.price}"></span>원</p>-->
-                    <p>맛 있는 곳에서 맛있게 재배한 맛좋은 고추 입니다^^</p>
+                    <h3>가격: <span th:text="${item.price}"></span>원</h3>
+                    <h3>재고: <span th:text="${item.stockQuantity}"></span>kg</h3>
+                    <p th:text="${item.explain}"></p>
                     <div class="single-product-form">
+                        <p style="font-size: medium"><strong>가공상태: </strong><span th:text="${item.processing}"></span></p>
                         <p style="font-size: medium"><strong>품종: </strong><span th:text="${item.variety}"></span></p>
                         <p style="font-size: medium"><strong>원산지: </strong><span th:text="${item.originD}"></span></p>
                         <p class="date" style="font-size: medium"><strong>가공일: </strong><span th:text="${item.processDate}"></span></p>
                         <p class="date" style="font-size: medium"><strong>수입일: </strong><span th:text="${item.importDate}"></span></p>
-                        <p class="author" style="font-size: medium"><strong>판매자: </strong><span th:text="${item.member.loginId}"></span></p>
-                        <p style="font-size: medium"><strong>재고: </strong><span th:text="${item.stockQuantity}"></span>kg</p>
                         <p style="font-size: medium"><strong>맵기 정도 (SHU) : </strong><span th:text="${item.spicy}"></span></p>
+                        <span class="author">판매자: <p th:text="${item.member.loginId}" class="fas fa-user"></p></span>
+                        <table>
+                            <tr><th th:bgcolor="${item.color}">&nbsp;&nbsp; 색 &nbsp;&nbsp;</th></tr>
+                        </table>
                     </div>
                 </div>
                 <br>
