@@ -30,6 +30,10 @@ public abstract class Item {
     
     private int sales; //판매수량도 추가 (굳이 추가해준 이유는 로직이 너무복잡해서 추적번거로움)
 
+    private String explain;
+
+    private String Processing;
+
     //==비즈니스 로직 ==//
     /*
      * stock 증가
