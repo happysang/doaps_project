@@ -101,8 +101,14 @@ public class ItemController {
         }
         model.addAttribute("member", loginMember);
 
+
         Pepper item = (Pepper) itemService.findOne(itemId);
         PepperForm form = new PepperForm();
+
+        if (item.getOrigin().equals("기타")) {
+            form.setOriginD(item.getOriginD());
+        }
+
         form.setId(item.getId());
         form.setName(item.getName());
         form.setPrice(item.getPrice());
@@ -114,6 +120,10 @@ public class ItemController {
         form.setVariety(item.getVariety());
         form.setColor(item.getColor());
         form.setSpicy(item.getSpicy());
+
+
+        form.setExplain(item.getExplain());
+        form.setProcessing(item.getProcessing());
 
         model.addAttribute("form", form);
         return "items/updateItemForm";
@@ -131,6 +141,11 @@ public class ItemController {
             File f = new File(root_path + attach_path + filename);
             files.transferTo(f);
             Pepper pepper = new Pepper();
+
+            if (!form.getOrigin().equals("기타")) {
+                form.setOriginD(form.getOrigin());
+            }
+
             pepper.setId(form.getId());
             pepper.setName(form.getName());
             pepper.setPrice(form.getPrice());
@@ -143,6 +158,10 @@ public class ItemController {
             pepper.setVariety(form.getVariety());
             pepper.setColor(form.getColor());
             pepper.setSpicy(form.getSpicy());
+
+            pepper.setOriginD(form.getOriginD());
+            pepper.setExplain(form.getExplain());
+            pepper.setProcessing(form.getProcessing());
 
             itemService.saveItem(pepper);
             return "redirect:/";
