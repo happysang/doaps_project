@@ -26,8 +26,8 @@
                                     <div class="billing-address-form">
                                         <form th:action="@{/items/new}" th:object="${form}" method="post" enctype="multipart/form-data">
                                             <p>상품명 <input type="text" th:field="*{name}" class="form-control" placeholder="상품명을 입력하세요" ></p>
-                                            <p>가격 <input type="number" th:field="*{price}" class="form-control" placeholder="가격을 입력하세요"></p>
-                                            <p>수량 <input type="number" th:field="*{stockQuantity}" class="form-control" placeholder="수량을 입력하세요.-단위:kg"></p>
+                                            <p>가격(kg당 가격) <input type="number" th:field="*{price}" class="form-control" placeholder="가격을 입력하세요"></p>
+                                            <p>수량(kg) <input type="number" th:field="*{stockQuantity}" class="form-control" placeholder="수량을 입력하세요.-단위:kg"></p>
                                             <p>품종 <input type="text" th:field="*{variety}" class="form-control" placeholder="품종을 입력하세요"></p>
                                             <p>가공상태<input type="text" th:field="*{processing}" class="form-control" placeholder="ex)건조,냉동 등"></p>
                                             <p>제품 설명</p><textarea th:field="*{explain}" class="billing-address-form" cols="80" rows="4" placeholder="제품 설명 부탁드려요."></textarea>
