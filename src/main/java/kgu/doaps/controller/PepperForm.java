@@ -14,13 +14,13 @@ public class PepperForm {
     private int stockQuantity;
     private Member member;
     private String imgUrl;
-
     private YearMonth importDate;
     private YearMonth processDate;
     private String origin;
+    private String originD;
     private String variety;
     private String color;
     private int spicy;  //스코빌 지수 (SHU)
-
-    private String originD;
+    private String explain;
+    private String Processing;
 }
