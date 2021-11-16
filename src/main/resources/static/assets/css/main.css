@@ -907,7 +907,7 @@ h2.widget-title:after {
   margin-bottom: 0;
 }
 
-.footer-box.subscribe form input[type=email] {
+.footer-box.subscribe form input[type=text] {
   border: none;
   background-color: #012738;
   width: 78%;
