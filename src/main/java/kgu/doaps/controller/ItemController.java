@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -240,13 +241,19 @@ public class ItemController {
 //        List<Item> items = itemService.findItems();
 //        model.addAttribute("items", items);
         List<Item> first = itemService.findByOrigin("국내산");
+        Collections.reverse(first);
         model.addAttribute("korea", first);
+
         List<Item> second = itemService.findByOrigin("중국산");
+        Collections.reverse(second);
         model.addAttribute("china", second);
+
         List<Item> third = itemService.findByOrigin("미국산");
+        Collections.reverse(third);
         model.addAttribute("usa", third);
 
         List<Item> etc = itemService.findByOrigin("기타");
+        Collections.reverse(etc);
         model.addAttribute("etc", etc);
 
         if (loginMember == null) model.addAttribute("member", new Member());
