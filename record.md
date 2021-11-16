@@ -85,6 +85,6 @@ OrderRepo, Service / Item.java - 판매량관련로직 / itemStats.html
 - Search 기능 활성화
 - 가격 키로당 가격으로 바꾸기
 - 상품 등록할 때 컬럼 추가 부분<br>
-  -> 상품 설명 부분, 글 등록 날짜(시간), 가공 방법 (말림, 냉동 등)
+  -> 상품 설명 부분, 가공 방법 (말림, 냉동 등) 
    
 - ★상품 필드 추가하면 Create, Update Form html + controller (create,update /createForm, UpdateForm) 빠뜨린거 없이 체크 해야됨...
