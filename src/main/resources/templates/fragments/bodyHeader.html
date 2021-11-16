@@ -41,7 +41,7 @@
                             <li th:unless="${member.loginId}"><a href="/login">로그인</a></li>
                             <li th:unless="${member.loginId}"><a href="/members/new">회원 가입</a></li>
                             <li><a href="/items/readall">전체 상품</a></li>
-                            <li th:if="${member.loginId}"><a href="#">마이페이지</a>
+                            <li th:if="${member.loginId}"><a href="">마이페이지</a>
                                 <ul class="sub-menu">
                                     <li><a th:href="@{/mypage/{id}/edit (id=${member.id})}">내 정보 수정</a></li>
                                     <li><a href="/mypage/myorder">내 주문 내역</a></li>
@@ -58,8 +58,6 @@
 
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                                 </div>
                             </li>
                         </ul>
