@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @Slf4j
@@ -24,6 +26,7 @@ public class HomeController {
     public String home(@Login Member loginMember, Model model){
 
         List<Item> items = itemService.findItems();
+        Collections.reverse(items);
 
         model.addAttribute("items", items);
 
