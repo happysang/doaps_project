@@ -81,7 +81,7 @@ OrderRepo, Service / Item.java - 판매량관련로직 / itemStats.html
 - 국산고추, 해외고추 카테고리별로 볼 수 있으면 좋을 것 같다. (완료)
 - 상품 수정 로직 구현 
 - 회원 정보 수정 페이지 header 넣기
-- Member-연령필드 - 통계에넣기
+- Member-연령필드 - 통계에넣기 (완료)
 - Search 기능 활성화
 - 가격 키로당 가격으로 바꾸기
 - 상품 등록할 때 컬럼 추가 부분<br>
