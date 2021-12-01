@@ -83,15 +83,17 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center" th:each="item : ${items}">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="" th:href="@{/items/{id}/detail (id=${item.id}) }"><img th:src="@{${item.getImgUrl()}}"></a>
+            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center" th:each="item,index : ${items}">
+                <div th:if="${index.index} < 6">
+                    <div class="single-product-item">
+                        <div class="product-image">
+                            <a href="" th:href="@{/items/{id}/detail (id=${item.id}) }"><img th:src="@{${item.getImgUrl()}}"></a>
+                        </div>
+                        <h3 th:text="${item.name}"></h3>
+                        판매자: <span th:text="${item.member.loginId}"></span>
+                        <p class="product-price" th:text="${item.price}"></p>
+                        <a href="" th:href="@{/items/{id}/detail (id=${item.id}) }" class="cart-btn"><i class="fas fa-shopping-cart"></i> 자세히 보기</a>
                     </div>
-                    <h3 th:text="${item.name}"></h3>
-                    판매자: <span th:text="${item.member.loginId}"></span>
-                    <p class="product-price" th:text="${item.price}"></p>
-                    <a href="" th:href="@{/items/{id}/detail (id=${item.id}) }" class="cart-btn"><i class="fas fa-shopping-cart"></i> 자세히 보기</a>
                 </div>
             </div>
         </div>
