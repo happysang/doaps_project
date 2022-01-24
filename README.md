@@ -1,1 +1,1 @@
-# doaps_project
+doaps_project 고추 쇼핑몰 웹 사이트
